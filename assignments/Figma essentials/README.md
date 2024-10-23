@@ -6,6 +6,8 @@
 - The hero section will include a menu. Make menu items a Figma component.
 - Use auto-layout, auto-spacing, constraints features.
 
+## **Our work**
+
 It is important to emphasize that the decision regarding the final selection for the theme of the site has not been made. So far, it is a website for taxi services.
 
 In figma, the appearance of the hero section on desktop, tablet and mobile has been done.
