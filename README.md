@@ -1,5 +1,44 @@
-# Human Computer Interaction
+# Semester Project
 
-The repository for college subject Human Computer Interaction.
+- [Project Structure](https://www.notion.so/Semester-Project-12ee4a5f90eb80b898cbf9e3fd122738?pvs=21)
+- [My Project Links](https://www.notion.so/Semester-Project-12ee4a5f90eb80b898cbf9e3fd122738?pvs=21)
+    - [Semester Project](https://www.notion.so/Semester-Project-12ee4a5f90eb80b898cbf9e3fd122738?pvs=21)
+    - [Semester Assignments](https://www.notion.so/Semester-Project-12ee4a5f90eb80b898cbf9e3fd122738?pvs=21)
+- [Project Requirements](https://www.notion.so/Semester-Project-12ee4a5f90eb80b898cbf9e3fd122738?pvs=21)
+    - [Web Application Requirements](https://www.notion.so/Semester-Project-12ee4a5f90eb80b898cbf9e3fd122738?pvs=21)
+    - [Project Demonstration](https://www.notion.so/Semester-Project-12ee4a5f90eb80b898cbf9e3fd122738?pvs=21)
 
-Filip Čalić & David Jezidžić
+## Project Structure
+
+- **`/`**: The source code of your main project
+- **`/assignments`**: Results of your semester assignments
+- **`/docs`**: If using GitHub for documentation (e.g., your final report in Markdown format)
+
+## My Project Links
+
+### Semester Project
+
+- Link to your production version: [**Production Version**](https://www.notion.so/URL_TO_PRODUCTION_VERSION)
+- Link to your final report: [**Final Report**](https://www.notion.so/URL_TO_FINAL_REPORT)
+
+### Semester Assignments
+
+- Link to Assignment 1: [**Assignment 1**](https://github.com/FCalic07/HCI/tree/main/assignments/Figma%20essentials)
+
+## Project Requirements
+
+### Web Application Requirements
+
+- [ ]  The application will be used from a web browser
+- [ ]  It will be accessible on devices of different sizes
+- [ ]  Users can search/filter products or services
+- [ ]  The application will support user login for showing private content
+- [ ]  One of the public pages will be a blog containing multiple posts with diverse content (images, videos, code snippets)
+- [ ]  Part of the application's content will be stored in a remote headless CMS system
+
+### Project Demonstration
+
+- [ ]  Show the production version of the project
+- [ ]  The production version will be deployed online on an appropriate cloud platform ([Vercel](https://vercel.com/), [Netlify](https://www.netlify.com/) or a similar service)
+- [ ]  Analyze the application's performance ([PageSpeed Insights](https://pagespeed.web.dev/))
+- [ ]  The analysis results will be part of the final report
