@@ -18,13 +18,13 @@
 
 ### Semester Project
 
-- Link to your production version: [**Production Version**](https://github.com/FCalic07/HCI/tree/main/assignments/Figma%20essentials) <!-- Replace with actual URL -->
+- Link to your production version: [**Production Version**](URL_TO_PRODUCTION_VERSION) <!-- Replace with actual URL -->
 - Link to your final report: [**Final Report**](URL_TO_FINAL_REPORT) <!-- Replace with actual URL -->
 <!-- Add more as necessary -->
 
 ### Semester Assignments
 
-- Link to Assignment 1: [**Assignment 1**](URL_TO_ASSIGNMENT_1) <!-- Replace with actual URL -->
+- Link to Assignment 1: [**Assignment 1**](https://github.com/FCalic07/HCI/tree/main/assignments/Figma%20essentials) <!-- Replace with actual URL -->
 
 ## Project Requirements
 
