@@ -24,7 +24,8 @@
 
 ### Semester Assignments
 
-- Link to Assignment 1: [**Assignment 1**](https://github.com/FCalic07/HCI/tree/main/assignments/Figma%20essentials) <!-- Replace with actual URL -->
+- Link to Assignment 1: [**Assignment 1**](https://github.com/FCalic07/HCI/tree/main/assignments/Figma%20essentials)
+- Link to Assignment 2: [**Assignment 2**](https://github.com/FCalic07/HCI/tree/main/assignments/User%20personas%20and%20information%20architecture) <!-- Replace with actual URL -->
 
 ## Project Requirements
 
