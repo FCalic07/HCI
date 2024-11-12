@@ -1,56 +1,62 @@
 'use client'
 import Image from "next/image";
-import { useRef, useState } from "react";
+import Link from "next/link";
+import { useState, useRef } from "react";
 
 export default function Home() {
+  const [playSaban, setPlaySaban] = useState("Play Saban");
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [audioButton, setAudioButton] = useState("Play song");
 
   const playSabanSaulic = () => {
-    console.log("aa")
-    if (audioRef.current) {
-      console.log("aaa")
-      if (audioButton === "Play song") {
-        audioRef.current.play().catch((error) => {
-          console.error("Autoplay failed due to user interaction requirements:", error);
-        });
-        setAudioButton("Pause song");
-      } else if (audioButton === "Pause song") {
+    if(audioRef.current){
+      if(playSaban == "Play Saban"){
+        audioRef.current.play();
+        setPlaySaban("Pause Saban");
+      }
+      else {
         audioRef.current.pause();
-        setAudioButton("Play song");
+        setPlaySaban("Play Saban");
       }
     }
-  };
+  }
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/backgroundPicture.jpg')" }}>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
 
-        <button 
-          onClick={playSabanSaulic} 
-          className="bg-white text-black font-semibold py-2 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300 hover:shadow-xl active:scale-95">
-            {audioButton}
+      {/* Header */}
+      <header className="relative z-10 flex justify-between items-center p-4 pl-32 pr-32 text-white">
+        <div>
+          <Link href="#home">
+          <Image src="/fubarLogo.svg" alt="FUBAR Logo" width={120} height={50} priority />
+          </Link>
+        </div>
+        <nav className="flex gap-8 font-semibold text-xl">
+          <Link href="#home" className="hover:underline">Home</Link>
+          <Link href="#about" className="hover:underline">About</Link>
+          <Link href="#services" className="hover:underline">What We Offer</Link>
+          <Link href="#contact" className="hover:underline">Contact Form</Link>
+        </nav>
+      </header>
+
+      {/* Main Content */}
+      <main className="relative z-10 flex flex-col items-start p-20 pl-32 min-h-screen text-white">
+        <h1 className="text-5xl sm:text-7xl font-bold pt-20 leading-tight max-w-2xl">
+          THE BEST<br/>
+          FOR YOUR<br/>
+          TAXI COMPANY
+        </h1>
+        <p className="mt-4 text-xl sm:text-2xl text-fuchsia-200 font-light">
+          INCREASE YOUR PRODUCTIVITY WITH OUR SERVICE
+        </p>
+        <button onClick={playSabanSaulic} className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
+          {playSaban}
         </button>
 
         <audio ref={audioRef} src="/assets/audio.mp3" preload="auto" />
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-      </footer>
     </div>
   );
 }
