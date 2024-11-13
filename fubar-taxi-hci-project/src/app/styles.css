@@ -1,0 +1,17 @@
+/* styles.css */
+
+.hover\\:custom-overline:hover {
+    position: relative;
+    color: #FFA500; /* Change the text color on hover to orange */
+  }
+  
+  .hover\\:custom-overline:hover::before {
+    content: "";
+    position: absolute;
+    top: -5px; /* Offset the line 5px above the text */
+    left: 0;
+    width: 100%;
+    height: 2px; /* Thickness of the overline */
+    background-color: #FFA500; /* Color of the overline */
+  }
+  

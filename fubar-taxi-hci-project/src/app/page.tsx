@@ -2,23 +2,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
+import './styles.css';
 
 export default function Home() {
   const [playSaban, setPlaySaban] = useState("Play Saban");
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const playSabanSaulic = () => {
-    if(audioRef.current){
-      if(playSaban == "Play Saban"){
+    if (audioRef.current) {
+      if (playSaban === "Play Saban") {
         audioRef.current.play();
         setPlaySaban("Pause Saban");
-      }
-      else {
+      } else {
         audioRef.current.pause();
         setPlaySaban("Play Saban");
       }
     }
-  }
+  };
+
+  // State for toggling the mobile menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/backgroundPicture.jpg')" }}>
@@ -27,25 +34,45 @@ export default function Home() {
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       {/* Header */}
-      <header className="relative z-10 flex justify-between items-center p-4 pl-32 pr-32 text-white">
+      <header className="relative z-10 flex justify-between items-center p-1 md:pl-20 md:pr-20 text-white bg-[#170A2D]">
         <div>
           <Link href="#home">
-          <Image src="/fubarLogo.svg" alt="FUBAR Logo" width={120} height={50} priority />
+          <Image src="/fubarLogo.svg" alt="FUBAR Logo" width={150} height={70} priority />
           </Link>
         </div>
-        <nav className="flex gap-8 font-semibold text-xl">
-          <Link href="#home" className="hover:underline">Home</Link>
-          <Link href="#about" className="hover:underline">About</Link>
-          <Link href="#services" className="hover:underline">What We Offer</Link>
-          <Link href="#contact" className="hover:underline">Contact Form</Link>
+        <nav className="hidden md:flex gap-10 font-semibold text-xl">
+          <Link href="#home" className="hover:text-[#FF604F] hover:overline">Home</Link>
+          <Link href="#about" className="hover:text-[#FF604F] hover:overline">About</Link>
+          <Link href="#services" className="hover:text-[#FF604F] hover:overline">What We Offer</Link>
+          <Link href="#contact" className="hover:text-[#FF604F] hover:overline">Contact Form</Link>
         </nav>
+
+        {/* Mobile Hamburger Menu Icon */}
+        <div className="md:hidden pr-4">
+          <button onClick={toggleMenu} className="focus:outline-none">
+            {/* Hamburger icon */}
+            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
       </header>
 
+      {/* Mobile Navigation Menu */}
+      {isMenuOpen && (
+        <div className="sm:hidden bg-[#170A2D] text-white font-semibold text-lg absolute right-0 w-50 z-20 flex flex-col gap-4">
+          <Link href="#home" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link href="#about" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link href="#services" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>What We Offer</Link>
+          <Link href="#contact" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>Contact Form</Link>
+        </div>
+      )}
+
       {/* Main Content */}
-      <main className="relative z-10 flex flex-col items-start p-20 pl-32 min-h-screen text-white">
+      <main className="relative z-10 flex flex-col items-start p-8 sm:p-20 min-h-screen text-white">
         <h1 className="text-5xl sm:text-7xl font-bold pt-20 leading-tight max-w-2xl">
-          THE BEST<br/>
-          FOR YOUR<br/>
+          THE BEST<br />
+          FOR YOUR<br />
           TAXI COMPANY
         </h1>
         <p className="mt-4 text-xl sm:text-2xl text-fuchsia-200 font-light">
