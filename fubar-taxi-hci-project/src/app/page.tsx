@@ -5,17 +5,17 @@ import { useState, useRef } from "react";
 import './styles.css';
 
 export default function Home() {
-  const [playSaban, setPlaySaban] = useState("Play Saban");
+  const [playSaban, setPlaySaban] = useState("Play Elvis");
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const playSabanSaulic = () => {
     if (audioRef.current) {
-      if (playSaban === "Play Saban") {
+      if (playSaban === "Play Elvis") {
         audioRef.current.play();
-        setPlaySaban("Pause Saban");
+        setPlaySaban("Pause Elvis");
       } else {
         audioRef.current.pause();
-        setPlaySaban("Play Saban");
+        setPlaySaban("Play Elvis");
       }
     }
   };
@@ -51,7 +51,7 @@ export default function Home() {
         <div className="md:hidden pr-4">
           <button onClick={toggleMenu} className="focus:outline-none">
             {/* Hamburger icon */}
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-8 h-8 text-white" fill="none" stroke="#FF604F" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
