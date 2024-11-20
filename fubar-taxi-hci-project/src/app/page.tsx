@@ -1,22 +1,10 @@
 'use client'
-import { useState, useRef } from "react";
+import { useRef } from "react";
+import Link from "next/link";
 import './styles.css';
 
 export default function Home() {
-  const [playSaban, setPlaySaban] = useState("Play Elvis");
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  const playSabanSaulic = () => {
-    if (audioRef.current) {
-      if (playSaban === "Play Elvis") {
-        audioRef.current.play();
-        setPlaySaban("Pause Elvis");
-      } else {
-        audioRef.current.pause();
-        setPlaySaban("Play Elvis");
-      }
-    }
-  };
 
   return (
     <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/backgroundPicture.jpg')" }}>
@@ -36,9 +24,12 @@ export default function Home() {
         <p className="mt-4 text-xl sm:text-2xl text-fuchsia-200 font-light">
           INCREASE YOUR PRODUCTIVITY WITH OUR SERVICE
         </p>
-        <button onClick={playSabanSaulic} className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
-          {playSaban}
-        </button>
+        
+        <Link href="/signin">
+          <button className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
+            <p>Sign In</p>
+          </button>
+        </Link>
 
         <audio ref={audioRef} src="/assets/audio.mp3" preload="auto" />
       </main>

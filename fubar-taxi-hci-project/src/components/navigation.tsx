@@ -2,29 +2,71 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+
+type Page = {
+  title: string;
+  path: `/${string}`;
+};
+
+const pages: Page[] = [
+  { title: "Home", path: "/" },
+  {
+    title: "About",
+    path: "/about",
+  },
+  {
+    title: "What We Offer",
+    path: "/products",
+  },
+
+  {
+    title: "Contact Form",
+    path: "/contact",
+  },
+];
+
+function processPage(page: Page, index: number, pathname: string) {
+  return (
+      <Link
+        key={index}  
+        href={page.path}
+        className={
+          page.path === "/"
+            ? pathname === page.path
+              ? "text-[#FF604F] overline"
+              : "hover:text-[#FF604F] hover:overline"
+            : pathname.startsWith(page.path)
+            ? "text-[#FF604F] overline"
+            : "hover:text-[#FF604F] hover:overline"
+        }
+      >
+        {page.title}
+      </Link>
+  );
+}
+
 
 export function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const pathname = usePathname();
     const toggleMenu = () => {
       console.log("aaa");
         setIsMenuOpen(!isMenuOpen);
       };
 
     return (
-        <header className="relative z-10 flex justify-between items-center p-1 md:pl-20 md:pr-20 text-white bg-[#170A2D]">
+        <header className="relative z-10 items-center flex justify-between p-1 md:pl-20 md:pr-20 text-white bg-[#170A2D]">
         <div>
-          <Link href="#home">
+          <Link href="/">
           <Image src="/fubarLogo.svg" alt="FUBAR Logo" width={150} height={70} priority />
           </Link>
         </div>
-        <nav className="hidden md:flex gap-10 font-semibold text-xl">
-          <Link href="#home" className="hover:text-[#FF604F] hover:overline">Home</Link>
-          <Link href="#about" className="hover:text-[#FF604F] hover:overline">About</Link>
-          <Link href="#services" className="hover:text-[#FF604F] hover:overline">What We Offer</Link>
-          <Link href="#contact" className="hover:text-[#FF604F] hover:overline">Contact Form</Link>
+        
+        <nav className="flex justify-end gap-10 font-semibold text-xl">
+          {pages.map((page, index) => processPage(page, index, pathname))}
         </nav>
-
+        
         {/* Mobile Hamburger Menu Icon */}
         <div className="md:hidden pr-4">
           <button onClick={toggleMenu} className="focus:outline-none">
@@ -45,7 +87,7 @@ export function Navigation() {
           <Link href="#contact" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>Contact Form</Link>
         </div>
       )}
-      
+
       </header>
     );
 }
