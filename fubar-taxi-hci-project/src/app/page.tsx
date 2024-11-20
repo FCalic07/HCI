@@ -1,10 +1,8 @@
 'use client'
-import Link from "next/link";
 import { useState, useRef } from "react";
 import './styles.css';
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [playSaban, setPlaySaban] = useState("Play Elvis");
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -27,16 +25,6 @@ export default function Home() {
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       {/* Header in layout */}
-
-      {/* Mobile Navigation Menu */}
-      {isMenuOpen && (
-        <div className="sm:hidden bg-[#170A2D] text-white font-semibold text-lg absolute right-0 w-50 z-20 flex flex-col gap-4">
-          <Link href="#home" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link href="#about" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>About</Link>
-          <Link href="#services" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>What We Offer</Link>
-          <Link href="#contact" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>Contact Form</Link>
-        </div>
-      )}
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-start p-8 sm:p-20 min-h-screen text-white">

@@ -7,6 +7,7 @@ export function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
+      console.log("aaa");
         setIsMenuOpen(!isMenuOpen);
       };
 
@@ -33,6 +34,18 @@ export function Navigation() {
             </svg>
           </button>
         </div>
+
+        
+      {/* Mobile Navigation Menu */}
+      {isMenuOpen && (
+        <div className="sm:hidden bg-[#170A2D] text-white font-semibold text-lg absolute right-0 w-50 z-20 flex flex-col gap-4">
+          <Link href="#home" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link href="#about" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link href="#services" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>What We Offer</Link>
+          <Link href="#contact" className="hover:text-[#FF604F] hover:overline" onClick={() => setIsMenuOpen(false)}>Contact Form</Link>
+        </div>
+      )}
+      
       </header>
     );
 }
