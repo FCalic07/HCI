@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import './styles.css';
@@ -19,10 +18,6 @@ export default function Home() {
         setPlaySaban("Play Elvis");
       }
     }
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
