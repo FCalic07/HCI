@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Our Partners",
+  title: "About Us",
 };
 
-const BASE_API_URL = "https://jsonplaceholder.typicode.com";
+export const BASE_API_URL = "https://jsonplaceholder.typicode.com";
 
-type User = {
+export type User = {
   id: number;
   company: {
     name: string;
@@ -54,14 +55,12 @@ export default async function AboutPage() {
               className="bg-white text-gray-900 shadow-md rounded-lg p-4 text-center hover:shadow-lg transition"
             >
               <h3 className="text-lg font-semibold mb-2">{user.company.name}</h3>
-              <a
-                href={`http://${user.website}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={`/about/${user.id}`}
                 className="text-blue-500 hover:underline text-sm"
               >
-                {user.website}
-              </a>
+                Find out more
+              </Link>
             </div>
           ))}
         </div>
