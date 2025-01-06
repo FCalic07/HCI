@@ -8,21 +8,23 @@ export const metadata: Metadata = {
   title: "Partner",
 };
 
-type UserParams = Promise<{ id: string }>
+type UserParams = {
+  params : { id: string };
+}
 
 async function getUser(id: string): Promise<User> {
     const data = await fetch(`${process.env.BASE_API_URL}/users/${id}`);
+    console.log(data.json());
     if (!data.ok) {
       throw new Error("Failed to fetch users");
     }
     return data.json();
 };
   
-export default async function PartnersPost(props: { params: UserParams }) {
-    const { id } = await props.params; //iz nekog razloga
-    const user = await getUser(id);
+export default async function PartnersPost({ params }: UserParams) {
+    const user = await getUser(params.id);
 
-    const { company, website } = user;
+    const { id, company, website } = user;
 
     if (!id) {
       notFound();
@@ -39,7 +41,7 @@ export default async function PartnersPost(props: { params: UserParams }) {
 
         <main className="flex min-h-screen flex-col items-center p-10 z-10">
           <Link
-            href="/about/"
+            href="/about"
             className="inline-flex items-center text-white-600 hover:text-gray-900 transition-colors duration-200 mb-6 z-10"
           >
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to all partners
