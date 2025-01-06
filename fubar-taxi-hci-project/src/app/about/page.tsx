@@ -5,8 +5,6 @@ export const metadata: Metadata = {
   title: "About Us",
 };
 
-export const BASE_API_URL = "https://jsonplaceholder.typicode.com";
-
 export type User = {
   id: number;
   company: {
@@ -18,7 +16,7 @@ export type User = {
 };
 
 async function getUsers(): Promise<User[]> {
-  const response = await fetch(`${BASE_API_URL}/users`);
+  const response = await fetch(`${process.env.BASE_API_URL}/users`);
   if (!response.ok) {
     throw new Error("Failed to fetch users");
   }

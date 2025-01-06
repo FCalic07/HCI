@@ -1,4 +1,3 @@
-import { BASE_API_URL } from "../page";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { User } from "../page";
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
 type UserParams = Promise<{ id: string }>
 
 async function getUser(id: string): Promise<User> {
-    const data = await fetch(`${BASE_API_URL}/users/${id}`);
+    const data = await fetch(`${process.env.BASE_API_URL}/users/${id}`);
     if (!data.ok) {
       throw new Error("Failed to fetch users");
     }
