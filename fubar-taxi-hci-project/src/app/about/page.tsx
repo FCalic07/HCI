@@ -13,6 +13,11 @@ export type User = {
     bs: string;
   };
   website: string;
+  address: {
+    street: string;
+    city: string;
+    zipcode: string;
+  };
 };
 
 async function getUsers(): Promise<User[]> {
@@ -40,25 +45,30 @@ export default async function AboutPage() {
         <h1 className="text-white text-6xl font-extrabold tracking-tight mb-8">
           Trusted Partners
         </h1>
-        <p className="text-white text-xl mb-10 text-center max-w-4xl">
+        <p className="text-fuchsia-200 text-xl mb-10 text-center max-w-4xl">
           We collaborate with some of the most innovative companies in the
           industry. Below is a list of our trusted partners.
         </p>
 
         {/* Grid of company cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full max-w-5xl">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full max-w-5xl">
           {users.map((user) => (
             <div
               key={user.id}
-              className="bg-white text-gray-900 shadow-md rounded-lg p-4 text-center hover:shadow-lg transition"
+              className="relative bg-white bg-opacity-20 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col justify-between hover:bg-opacity-30 transition"
             >
-              <h3 className="text-lg font-semibold mb-2">{user.company.name}</h3>
-              <Link
-                href={`/about/${user.id}`}
-                className="text-blue-500 hover:underline text-sm"
-              >
-                Find out more
-              </Link>
+              {/* Company Name */}
+              <h3 className="text-white text-xl font-bold mb-4">{user.company.name}</h3>
+
+              {/* Find Out More Link */}
+              <div className="mt-auto">
+                <Link
+                  href={`/about/${user.id}`}
+                  className="text-blue-300 hover:text-blue-400 hover:underline text-sm"
+                >
+                  Find out more
+                </Link>
+              </div>
             </div>
           ))}
         </div>
@@ -66,3 +76,4 @@ export default async function AboutPage() {
     </div>
   );
 }
+
