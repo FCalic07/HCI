@@ -9,10 +9,6 @@ export const metadata: Metadata = {
   title: "Partner",
 };
 
-type TrusterPartnersProps = {
-    params: { id: string };
-};
-
 async function getUser(id: string): Promise<User> {
     const data = await fetch(`${BASE_API_URL}/users/${id}`);
     if (!data.ok) {
@@ -21,7 +17,7 @@ async function getUser(id: string): Promise<User> {
     return data.json();
 };
   
-export default async function PartnersPost({ params }: TrusterPartnersProps) {
+export default async function PartnersPost({ params }: { params: { id: string }; }) {
     const { id } = await params; //iz nekog razloga
     const user = await getUser(id);
 
