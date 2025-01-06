@@ -14,7 +14,6 @@ type UserParams = {
 
 async function getUser(id: string): Promise<User> {
     const data = await fetch(`${process.env.BASE_API_URL}/users/${id}`);
-    console.log(data.json());
     if (!data.ok) {
       throw new Error("Failed to fetch users");
     }
@@ -22,9 +21,10 @@ async function getUser(id: string): Promise<User> {
 };
   
 export default async function PartnersPost({ params }: UserParams) {
-    const user = await getUser(params.id);
+    const { id } = await params;
+    const user = await getUser(id);
 
-    const { id, company, website } = user;
+    const { company, website } = user;
 
     if (!id) {
       notFound();
