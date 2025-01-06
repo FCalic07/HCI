@@ -55,7 +55,7 @@ export default async function PartnersPost(props: { params: UserParams }) {
 
           {/* Catchphrase */}
           <p className="text-lg italic text-gray-300 mb-6">
-            "{company.catchPhrase}"
+            &quot;{company.catchPhrase}&quot;
           </p>
 
           {/* Company Details */}
