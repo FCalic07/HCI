@@ -8,9 +8,7 @@ export const metadata: Metadata = {
   title: "Partner",
 };
 
-type UserParams = {
-  params : { id: string };
-}
+type UserParams = Promise<{ id: string }>
 
 async function getUser(id: string): Promise<User> {
     const data = await fetch(`${process.env.BASE_API_URL}/users/${id}`);
@@ -20,8 +18,8 @@ async function getUser(id: string): Promise<User> {
     return data.json();
 };
   
-export default async function PartnersPost({ params }: UserParams) {
-    const { id } = await params;
+export default async function PartnersPost(props: { params: UserParams }) {
+    const { id } = await props.params;
     const user = await getUser(id);
 
     const { company, website } = user;
