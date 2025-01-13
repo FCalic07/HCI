@@ -37,7 +37,7 @@ export default function Home() {
       </div>
 
       {/* About Us Section */}
-      <section className="bg-[#170A2D] text-white py-52 px-8 sm:px-24">
+      <section className="bg-[#170A2D] text-white py-24 md:py-52 px-8 sm:px-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Image */}
           <div className="flex justify-center">
@@ -63,9 +63,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#170A2D] text-white flex justify-center items-center">
+      <section className="md:py-0 py-16  bg-[#170A2D] text-white flex justify-center items-center">
         <h1
-          className="text-[10vw] font-extrabold uppercase text-transparent"
+          className="text-7xl md:text-[10vw] font-extrabold uppercase text-transparent"
           style={{
             backgroundImage: "url('/assets/sky.jpg')", // Use the image for the letters
             backgroundSize: "cover", // Ensures the image covers the letters
