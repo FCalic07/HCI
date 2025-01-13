@@ -51,9 +51,11 @@ export default async function AboutPage() {
         </p>
 
         {/* Grid of company cards */}
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full max-w-5xl">
           {users.map((user) => (
-            <div
+            <Link
+              href={`/about/${user.id}`}
               key={user.id}
               className="relative bg-white bg-opacity-20 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col justify-between hover:bg-opacity-30 transition"
             >
@@ -62,14 +64,13 @@ export default async function AboutPage() {
 
               {/* Find Out More Link */}
               <div className="mt-auto">
-                <Link
-                  href={`/about/${user.id}`}
-                  className="text-blue-300 hover:text-blue-400 hover:underline text-sm"
+                <p
+                  className="text-blue-300 hover:text-blue-400 text-sm"
                 >
                   Find out more
-                </Link>
+                </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </main>
