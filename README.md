@@ -29,6 +29,8 @@
 - Link to Assignment 3: [**Assignment 3**](https://github.com/FCalic07/HCI/tree/main/assignments/Next.js%20-%20Deploying%20Application)
 - Link to Assignment 4: [**Assignment 4**](https://github.com/FCalic07/HCI/tree/main/assignments/Low%20or%20High-fidelity%20prototype)
 - Link to Assignment 5: [**Assignment 5**](https://github.com/FCalic07/HCI/tree/main/assignments/Next.js%20-%20Dynamic%20routes,%20data%20fetching)
+- Link to Assignment 6: [**Assignment 6**](https://github.com/FCalic07/HCI/tree/main/assignments/Full%20Responsive%20Page%20Coding)
+
 
 ## Project Requirements
 
