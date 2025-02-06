@@ -39,7 +39,7 @@ export default async function PartnersPost(props: { params: UserParams }) {
 
       <main className="relative flex items-start justify-center min-h-screen p-10 z-10">
         {/* Glass Card */}
-        <div className="bg-white bg-opacity-20 backdrop-blur-md shadow-xl rounded-lg p-10 max-w-4xl w-full text-center text-white flex flex-col">
+        <div className="bg-white/10 border border-white/20 backdrop-blur-md rounded-lg p-10 max-w-4xl w-full text-center text-white flex flex-col">
           {/* Back to All Partners */}
           <Link
             href="/about"

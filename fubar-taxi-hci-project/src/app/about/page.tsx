@@ -42,7 +42,7 @@ export default async function AboutPage() {
 
       <main className="relative flex flex-col items-center p-10 z-10">
         {/* Title */}
-        <h1 className="text-white text-6xl font-extrabold tracking-tight mb-8">
+        <h1 className="text-white text-5xl font-extrabold text-center tracking-tight mb-8">
           Trusted Partners
         </h1>
         <p className="text-fuchsia-200 text-xl mb-10 text-center max-w-4xl">
@@ -57,7 +57,7 @@ export default async function AboutPage() {
             <Link
               href={`/about/${user.id}`}
               key={user.id}
-              className="relative bg-white bg-opacity-20 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col justify-between hover:bg-opacity-30 transition"
+              className="relative bg-white/10 border border-white/20 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col justify-between hover:bg-opacity-30 transition"
             >
               {/* Company Name */}
               <h3 className="text-white text-xl font-bold mb-4">{user.company.name}</h3>

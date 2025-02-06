@@ -22,7 +22,6 @@ export function Navigation() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
   const closeMenu = () => setIsMenuOpen(false);
 
   // Close the menu when clicking outside of it
@@ -39,8 +38,15 @@ export function Navigation() {
     };
   }, []);
 
+  // Helper to determine active state
+  const isActive = (page: Page) => {
+    return page.path === "/"
+      ? pathname === page.path
+      : pathname.startsWith(page.path);
+  };
+
   return (
-    <header className="relative z-50 flex items-center justify-between p-1 md:pl-20 md:pr-20 bg-[#170A2D] text-white">
+    <header className="relative z-40 flex items-center justify-between p-1 md:pl-20 md:pr-20 bg-[#170A2D] text-white">
       {/* Logo */}
       <div>
         <Link href="/">
@@ -60,15 +66,9 @@ export function Navigation() {
           <Link
             key={index}
             href={page.path}
-            className={
-              page.path === "/"
-                ? pathname === page.path
-                  ? "text-[#FF604F] overline"
-                  : "hover:text-[#FF604F] hover:overline"
-                : pathname.startsWith(page.path)
-                ? "text-[#FF604F] overline"
-                : "hover:text-[#FF604F] hover:overline"
-            }
+            className={`nav-link-overline ${
+              isActive(page) ? "active text-[#FF604F]" : "hover:text-[#FF604F]"
+            }`}
           >
             {page.title}
           </Link>
@@ -98,7 +98,7 @@ export function Navigation() {
       {/* Sliding Mobile Navigation Menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full bg-[#170A2D] text-white transform ${
+        className={`fixed top-0 right-0 h-full bg-[#170A2D] bg-opacity-20 backdrop-blur-md shadow-xl text-white transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out w-64 z-20`}
       >
@@ -129,16 +129,10 @@ export function Navigation() {
             <Link
               key={index}
               href={page.path}
-              className={
-                page.path === "/"
-                  ? pathname === page.path
-                    ? "text-[#FF604F] overline"
-                    : "hover:text-[#FF604F] hover:overline"
-                  : pathname.startsWith(page.path)
-                  ? "text-[#FF604F] overline"
-                  : "hover:text-[#FF604F] hover:overline"
-              }
-              onClick={closeMenu} // Close menu when a link is clicked
+              className={`nav-link-overline ${
+                isActive(page) ? "active text-[#FF604F]" : "hover:text-[#FF604F]"
+              }`}
+              onClick={closeMenu}
             >
               {page.title}
             </Link>

@@ -19,3 +19,30 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom overline for navigation links */
+.nav-link-overline {
+  position: relative;
+  /* (Optional) any additional styling for the link */
+}
+
+.nav-link-overline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* Adjust this value to move the line further above the text */
+  top: -4px; 
+  /* Set the desired thickness and color of your overline */
+  border-top: 2px solid #FF604F; 
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+/* Show the overline on hover or when the link is active */
+.nav-link-overline:hover::before,
+.nav-link-overline:focus::before,
+.nav-link-overline.active::before {
+  opacity: 1;
+}

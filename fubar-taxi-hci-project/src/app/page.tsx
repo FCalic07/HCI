@@ -65,13 +65,12 @@ export default function Home() {
 
       <section className="md:py-0 py-16  bg-[#170A2D] text-white flex justify-center items-center">
         <h1
-          className="text-7xl md:text-[10vw] font-extrabold uppercase text-transparent"
+          className="bg-fixed bg-center text-7xl md:text-[10vw] font-extrabold uppercase text-transparent"
           style={{
             backgroundImage: "url('/assets/sky.jpg')", // Use the image for the letters
             backgroundSize: "cover", // Ensures the image covers the letters
-            backgroundPosition: "center", // Centers the image within the letters
-            WebkitBackgroundClip: "text", // Makes the image visible only within the text
-            WebkitTextFillColor: "transparent", // Ensures the text is transparent, showing only the image
+            WebkitBackgroundClip: "text", // ok
+            WebkitTextFillColor: "transparent", // ok
           }}
         >
           FUBAR
