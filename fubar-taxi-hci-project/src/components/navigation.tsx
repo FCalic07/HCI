@@ -1,15 +1,17 @@
-'use client';
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
 
 type Page = {
   title: string;
-  path: `/${string}`;
+  path: string;
 };
 
-const pages: Page[] = [
+const basePages: Page[] = [
   { title: "Home", path: "/" },
   { title: "About", path: "/about" },
   { title: "What We Offer", path: "/products" },
@@ -21,47 +23,62 @@ export function Navigation() {
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
 
+  const [user] = useAuthState(auth);
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Close the menu when clicking outside of it
+  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         closeMenu();
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Helper to determine active state
   const isActive = (page: Page) => {
     return page.path === "/"
       ? pathname === page.path
-      : pathname.startsWith(page.path);
+      : (pathname ?? "").startsWith(page.path);
   };
+
+  // Add Admin Page if user is signed in
+  const pages = user
+    ? [...basePages, { title: "Admin Page", path: "/adminpage" }]
+    : basePages;
 
   return (
     <header className="relative z-40 flex items-center justify-between p-1 md:pl-20 md:pr-20 bg-[#170A2D] text-white">
-      {/* Logo */}
-      <div>
-        <Link href="/">
-          <Image
-            src="/fubarLogo.svg"
-            alt="FUBAR Logo"
-            width={150}
-            height={70}
-            priority
-          />
-        </Link>
+      {/*LOGO & WELCOME MESSAGE */}
+      <div className="flex justify-between items-center">
+        {/* Logo */}
+        <div>
+          <Link href="/">
+            <Image
+              src="/fubarLogo.svg"
+              alt="FUBAR Logo"
+              width={150}
+              height={70}
+              priority
+            />
+          </Link>
+        </div>
+        {/* {user && (
+          <span className="ml-4 text-smtext-gray-200 text-center">
+            Welcome,
+            <br />
+            <b className="text-[#FF604F]">
+              {user.email?.split("@")[0].toUpperCase()}
+            </b>
+          </span>
+        )} */}
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex gap-10 font-semibold text-xl">
+      <nav className="hidden md:flex gap-10 font-semibold text-xl items-center">
         {pages.map((page, index) => (
           <Link
             key={index}
@@ -73,6 +90,23 @@ export function Navigation() {
             {page.title}
           </Link>
         ))}
+        {user && (
+          // <span className="ml-4 text-sm text-gray-200 text-center hover:text-lg">
+          <span
+            className="
+    ml-4 text-sm text-gray-200 text-center
+    transition-all duration-300
+    hover:text-lg hover:text-[#FF604F] hover:scale-125 hover:rotate-6 hover:drop-shadow-lg hover:font-extrabold
+    cursor-pointer
+  "
+          >
+            Welcome,
+            <br />
+            <b className="text-[#FF604F]">
+              {user.email?.split("@")[0].toUpperCase()}
+            </b>
+          </span>
+        )}
       </nav>
 
       {/* Mobile Hamburger Menu Icon */}
@@ -83,7 +117,6 @@ export function Navigation() {
             fill="none"
             stroke="#FF604F"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               strokeLinecap="round"
@@ -112,7 +145,6 @@ export function Navigation() {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               strokeLinecap="round"
@@ -130,13 +162,20 @@ export function Navigation() {
               key={index}
               href={page.path}
               className={`nav-link-overline ${
-                isActive(page) ? "active text-[#FF604F]" : "hover:text-[#FF604F]"
+                isActive(page)
+                  ? "active text-[#FF604F]"
+                  : "hover:text-[#FF604F]"
               }`}
               onClick={closeMenu}
             >
               {page.title}
             </Link>
           ))}
+          {user && (
+            <span className="mt-4 text-lg text-gray-200">
+              Welcome, <b>{user.email}</b>
+            </span>
+          )}
         </nav>
       </div>
 

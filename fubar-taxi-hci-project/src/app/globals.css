@@ -46,3 +46,7 @@ body {
 .nav-link-overline.active::before {
   opacity: 1;
 }
+html {
+  scroll-behavior: smooth;
+}
+

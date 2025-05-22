@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PlayElvis from "./playElvis"
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Admin Panel",
 };
 
 export default function AboutPage() {

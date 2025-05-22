@@ -1,5 +1,7 @@
 /* styles.css */
-
+html {
+  scroll-behavior: smooth;
+}
 .hover\\:custom-overline:hover {
     position: relative;
     color: #FFA500; /* Change the text color on hover to orange */
