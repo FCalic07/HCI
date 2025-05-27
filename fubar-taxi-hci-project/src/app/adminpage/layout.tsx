@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { auth } from "@/app/firebase/config";
 import Sidebar, { SidebarItem } from "@/components/sidebar";
-import { Navigation } from "@/components/navigation";
 import {
   faCar,
   faMapLocationDot,
