@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { auth } from "@/app/firebase/config";
-import Sidebar, { SidebarItem } from "@/components/sidebar";
+import Sidebar, { SidebarItem } from "@/components/Sidebar";
 import {
   faCar,
   faMapLocationDot,
@@ -44,7 +44,7 @@ export default function AdminLayout({
         <SidebarItem icon={faPerson} label="Employees" href="/adminpage/employees" />
       </Sidebar>
 
-      <main className="flex-1 p-6">
+      <main className="flex-1">
         {children}
       </main>
     </div>

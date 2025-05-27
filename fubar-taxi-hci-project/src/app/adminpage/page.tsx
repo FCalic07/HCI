@@ -24,10 +24,4 @@ export default function AdminPage() {
     );
   }
 
-  // Only render page if user is authenticated
-  return (
-    <div className="bg-black flex  justify-between" >
-     
-    </div>
-  );
 }
