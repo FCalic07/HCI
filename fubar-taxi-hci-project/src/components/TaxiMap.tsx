@@ -29,6 +29,13 @@ export default function TaxiMap() {
 
   const [taxis, setTaxis] = useState<Taxi[]>([]);
 
+  interface FirebaseTaxiData {
+    coords: {
+      latitude: number;
+      longitude: number;
+  };
+}
+
   useEffect(() => {
     const taxiRef = ref(db, "GellaTaxi/Taxi");
 
@@ -37,12 +44,14 @@ export default function TaxiMap() {
       const parsedTaxis: Taxi[] = [];
 
       if (data) {
-        Object.entries(data).forEach(([id, value]: any) => {
-          if (value.coords?.latitude && value.coords?.longitude) {
+        Object.entries(data).forEach(([id, value]) => {
+          const taxi = value as FirebaseTaxiData;
+
+          if (taxi.coords?.latitude && taxi.coords?.longitude) {
             parsedTaxis.push({
               id,
-              lat: value.coords.latitude,
-              lng: value.coords.longitude,
+              lat: taxi.coords.latitude,
+              lng: taxi.coords.longitude,
             });
           }
         });

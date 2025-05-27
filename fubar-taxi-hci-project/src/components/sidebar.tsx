@@ -30,7 +30,8 @@ export function SidebarItem({ icon, label, href }: SidebarItemProps) {
 
 export default function Sidebar({ children }: SidebarProps) {
   return (
-    <div className="w-48 h-screen bg-gray-900 text-white flex flex-col">
+    /*Desktop */
+    <div className="hidden w-48 h-screen bg-[#170A2D] text-white md:flex flex-col">
       <div className="px-4 py-4 text-ml text-left font-semibold">Admin Dashboard</div>
       <nav className="flex- 1 overflow-y-auto">{children}</nav>
     </div>
