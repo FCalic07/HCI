@@ -41,7 +41,7 @@ export default function Home() {
             INCREASE YOUR PRODUCTIVITY WITH OUR SERVICE
           </p>
 
-          <Link href="/signin2">
+          <Link href="/signin">
             <button className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
               <p>Sign In</p>
             </button>

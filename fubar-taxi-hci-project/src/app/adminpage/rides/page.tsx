@@ -5,7 +5,8 @@ import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export default function AdminPage() {
+
+export default function Dashboard() {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
 
@@ -26,8 +27,7 @@ export default function AdminPage() {
 
   // Only render page if user is authenticated
   return (
-    <div className="bg-black flex  justify-between" >
-     
-    </div>
+
+      <h1 className="text-center text-white"> ride logs</h1>
   );
 }
