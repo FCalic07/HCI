@@ -77,7 +77,7 @@ export default async function AboutPage() {
             return (
               <div
                 key={item.sys.id || idx}
-                className="relative bg-white/10 border border-white/20 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col items-center transition-transform transition-colors duration-300 hover:scale-105 hover:bg-white/20"
+                className="relative bg-white/10 border border-white/20 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col items-center  transition-colors duration-300 hover:scale-105 hover:bg-white/20"
               >
                 {iconUrl ? (
                   <Image

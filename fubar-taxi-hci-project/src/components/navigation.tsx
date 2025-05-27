@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
+import { signOut } from "firebase/auth";
 
 type Page = {
   title: string;
@@ -20,8 +21,10 @@ const basePages: Page[] = [
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false); // NEW STATE
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
 
   const [user] = useAuthState(auth);
 
@@ -39,6 +42,22 @@ export function Navigation() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Close profile modal when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        profileRef.current &&
+        !profileRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileModalOpen(false);
+      }
+    };
+    if (isProfileModalOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isProfileModalOpen]);
+
   const isActive = (page: Page) => {
     return page.path === "/"
       ? pathname === page.path
@@ -49,10 +68,20 @@ export function Navigation() {
   const pages = user
     ? [...basePages, { title: "Admin Page", path: "/adminpage" }]
     : basePages;
+    
+
+  // Profile picture logic (fallback to default)
+  const profilePic = user?.photoURL || "/assets/default-profile.png";
+
+  // Log out handler
+  const handleLogout = async () => {
+    await signOut(auth);
+    setIsProfileModalOpen(false);
+  };
 
   return (
     <header className="relative z-40 flex items-center justify-between p-1 md:pl-20 md:pr-20 bg-[#170A2D] text-white">
-      {/*LOGO & WELCOME MESSAGE */}
+      {/*LOGO  */}
       <div className="flex justify-between items-center">
         {/* Logo */}
         <div>
@@ -66,15 +95,6 @@ export function Navigation() {
             />
           </Link>
         </div>
-        {/* {user && (
-          <span className="ml-4 text-smtext-gray-200 text-center">
-            Welcome,
-            <br />
-            <b className="text-[#FF604F]">
-              {user.email?.split("@")[0].toUpperCase()}
-            </b>
-          </span>
-        )} */}
       </div>
 
       {/* Desktop Navigation */}
@@ -90,23 +110,33 @@ export function Navigation() {
             {page.title}
           </Link>
         ))}
-        {user && (
-          // <span className="ml-4 text-sm text-gray-200 text-center hover:text-lg">
-          <span
-            className="
-    ml-4 text-sm text-gray-200 text-center
-    transition-all duration-300
-    hover:text-lg hover:text-[#FF604F] hover:scale-125 hover:rotate-6 hover:drop-shadow-lg hover:font-extrabold
-    cursor-pointer
-  "
-          >
+        {/* {user && (
+          
+          <span className="ml-4 text-sm text-gray-200 text-center ">
             Welcome,
             <br />
             <b className="text-[#FF604F]">
               {user.email?.split("@")[0].toUpperCase()}
             </b>
           </span>
-        )}
+        )} */}
+
+        {/* Profile Image triggers modal */}
+        {user && (
+  <div
+    className="w-10 h-10 relative cursor-pointer"
+    onClick={() => setIsProfileModalOpen(true)}
+  >
+    <Image
+      src={profilePic}
+      alt="Profile"
+      width={40}
+      height={40}
+      className="rounded-full border-2 border-[#FF604F] object-cover"
+    />
+  </div>
+)}
+
       </nav>
 
       {/* Mobile Hamburger Menu Icon */}
@@ -185,6 +215,60 @@ export function Navigation() {
           className="fixed inset-0 bg-black opacity-50 z-10"
           onClick={closeMenu}
         ></div>
+      )}
+
+      {/* === LOG OUT MODAL (Profile Modal) === */}
+      {isProfileModalOpen && (
+        <>
+          {/* Overlay */}
+          <div className="fixed inset-0 bg-black bg-opacity-30 z-50" />
+          {/* Modal */}
+          <div
+            ref={profileRef}
+            className="fixed top-4 right-4 w-80 bg-white text-black rounded-xl shadow-lg z-[60] animate-slideInRight"
+          >
+            <div className="flex flex-col items-center p-6">
+              <Image
+                src={profilePic}
+                alt="Profile"
+                width={64}
+                height={64}
+                className="rounded-full border-2 border-[#FF604F] object-cover mb-2"
+              />
+              <span className="font-semibold text-[#170A2D]">
+                {user?.email?.split("@")[0].toUpperCase()}
+              </span>
+              <span className="text-xs text-gray-500 mb-4">{user?.email}</span>
+              <button
+                onClick={handleLogout}
+                className="w-full px-4 py-2 rounded bg-[#FF604F] text-white font-semibold hover:bg-[#d44a3b] transition"
+              >
+                Log Out
+              </button>
+            </div>
+            {/* Close Icon */}
+            <button
+              className="absolute top-2 right-2 text-gray-400 hover:text-[#FF604F] text-2xl"
+              onClick={() => setIsProfileModalOpen(false)}
+            >
+              &times;
+            </button>
+          </div>
+          {/* Slide-in animation */}
+          <style jsx>{`
+            @keyframes slideInRight {
+              from {
+                transform: translateX(100%);
+              }
+              to {
+                transform: translateX(0);
+              }
+            }
+            .animate-slideInRight {
+              animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+          `}</style>
+        </>
       )}
     </header>
   );

@@ -6,8 +6,6 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Sidebar, { SidebarItem } from "@/components/sidebar";
 
-
-
 import {
   faCar,
   faMapLocationDot,
@@ -36,16 +34,15 @@ export default function AdminPage() {
 
   // Only render page if user is authenticated
   return (
-    <div className="bg-black flex  justify-between" >
-     
+    <div className="bg-black flex flex-row justify-between">
+        
       <Sidebar>
               <SidebarItem icon={faCar} label="Taxi" href="/adminpage" />
               <SidebarItem icon={faMapLocationDot} label="Rides" href="/rideLogs" />
               <SidebarItem icon={faChartLine} label="Inocome" href="/income" />
               <SidebarItem icon={faPerson} label="Employees" href="/employees" />
             </Sidebar>
-       <h1 className="text-white">admin page</h1>
-      
+      <h1 className="text-center text-white"> income</h1>
     </div>
   );
 }

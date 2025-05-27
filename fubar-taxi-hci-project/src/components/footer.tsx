@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-[#170A2D] text-white py-6">
+    <footer className="bg-[#170A2D] text-white">
       <div className="flex flex-col items-center justify-center">
         {/* Logo */}
         <Link href="/">
