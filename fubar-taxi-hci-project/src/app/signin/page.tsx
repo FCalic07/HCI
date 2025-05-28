@@ -11,8 +11,12 @@ const LoginForm: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const [signInWithEmailAndPassword, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [
+  signInWithEmailAndPassword, 
+  loading,                    
+  error                       
+] = useSignInWithEmailAndPassword(auth);
+
 
   const router = useRouter();
 
@@ -140,7 +144,7 @@ const LoginForm: React.FC = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className=" bg-red-500 hover:bg-red-700 mt-6 w-full bg-[#45f3ff] text-white font-semibold py-2 rounded transition-opacity hover:opacity-90"
+            className=" bg-red-500 hover:bg-red-700 mt-6 w-full  text-white font-semibold py-2 rounded transition-opacity hover:opacity-90"
             disabled={Boolean(loading)}
           >
             Sign In

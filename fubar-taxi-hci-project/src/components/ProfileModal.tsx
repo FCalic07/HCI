@@ -23,7 +23,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
       {/* Modal */}
       <div
         ref={profileRef}
-        className="fixed top-4 right-4 w-80 bg-white text-black rounded-xl shadow-lg z-[60] animate-slideInRight"
+        className="fixed top-4 right-4 w-80 bg-[#170A2D] text-white rounded-xl shadow-lg z-[60] animate-slideInRight"
       >
         <div className="flex flex-col items-center p-6">
           <Image
@@ -33,7 +33,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
             height={64}
             className="rounded-full border-2 border-[#FF604F] object-cover mb-2"
           />
-          <span className="font-semibold text-[#170A2D]">
+          <span className="font-semibold text-white">
             {user?.email?.split("@")[0].toUpperCase()}
           </span>
           <span className="text-xs text-gray-500 mb-4">{user?.email}</span>

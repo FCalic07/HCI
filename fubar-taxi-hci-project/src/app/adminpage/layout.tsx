@@ -2,10 +2,11 @@
 'use client';
 
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";  // ← pull in usePathname
 import { useEffect } from "react";
 import { auth } from "@/app/firebase/config";
-import Sidebar, { SidebarItem } from "@/components/Sidebar";
+import Sidebar from "@/components/Sidebar";
+import { SidebarItem } from "@/components/SidebarItem";
 import {
   faCar,
   faMapLocationDot,
@@ -20,6 +21,9 @@ export default function AdminLayout({
 }) {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
+  const pathname = usePathname();              // ← current URL
+  console.log(pathname);
+  
 
   useEffect(() => {
     if (!loading && !user) {
@@ -38,10 +42,26 @@ export default function AdminLayout({
   return (
     <div className="flex min-h-screen bg-black text-white">
       <Sidebar>
-        <SidebarItem icon={faCar} label="Taxi" href="/adminpage/dashboard" />
-        <SidebarItem icon={faMapLocationDot} label="Rides" href="/adminpage/rides" />
-        <SidebarItem icon={faChartLine} label="Income" href="/adminpage/income" />
-        <SidebarItem icon={faPerson} label="Employees" href="/adminpage/employees" />
+        <SidebarItem
+          icon={faCar}
+          label="Taxi"
+          href="/adminpage/dashboard"
+        />
+        <SidebarItem
+          icon={faMapLocationDot}
+          label="Rides"
+          href="/adminpage/rides"
+        />
+        <SidebarItem
+          icon={faChartLine}
+          label="Income"
+          href="/adminpage/income"
+        />
+        <SidebarItem
+          icon={faPerson}
+          label="Employees"
+          href="/adminpage/employees"
+        />
       </Sidebar>
 
       <main className="flex-1">

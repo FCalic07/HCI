@@ -5,6 +5,7 @@ import CardsSection from "@/components/CardsSection";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./styles.css";
+import Image from "next/image";
 
 export default function Home() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -54,7 +55,14 @@ export default function Home() {
       {/* About Us Section */}
       <section
         id="about"
-        className="bg-[#170A2D] text-white py-24 md:py-30 px-8 sm:px-24"
+        className="
+  bg-[#170A2D]
+  text-white
+  py-24      
+  md:py-30    
+  sm:pr-10  
+  sm:pl-10
+"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Image */}
@@ -85,12 +93,14 @@ export default function Home() {
           id="fubar"
           className="md:py-0 py-16 bg-[#170A2D] text-white flex justify-center items-center"
         >
-          {/* Preload the image */}
-          <link
-            rel="preload"
-            href="/assets/sky.webp"
-            as="image"
-            fetchPriority="high"
+          {/* Logo background image for text effect (preloading handled by Next.js automatically) */}
+          <Image
+            src="/assets/sky.webp"
+            alt="Sky background for FUBAR logo text effect"
+            width={1920}
+            height={1080}
+            priority
+            style={{ display: "none" }}
           />
           <h1
             className="bg-fixed bg-center font-extrabold uppercase text-transparent text-center text-7xl md:text-[10vw]"

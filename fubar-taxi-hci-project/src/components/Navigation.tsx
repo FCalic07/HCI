@@ -16,7 +16,7 @@ type Page = {
 const pages: Page[] = [
   { title: "Home", path: "/" },
   { title: "About", path: "/about" },
-  { title: "What We Offer", path: "/products" },
+  { title: "Our Services", path: "/products" },
   { title: "Contact Form", path: "/contact" },
 ];
 
@@ -81,7 +81,7 @@ export function Navigation() {
 
   if (user) {
     return (
-      <header className="relative z-40 flex items-center justify-between p-1 md:pl-20 md:pr-20 bg-[#170A2D] text-white">
+      <header className="relative z-40 flex items-center justify-between pl-4 pr-4 bg-[#170A2D] text-white">
         {/*LOGO  */}
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -179,17 +179,6 @@ export function Navigation() {
                 {page.title}
               </Link>
             ))}
-            {user && (
-              <span className="mt-4 text-lg text-gray-200">
-                Welcome, <b>{user.email}</b>
-              </span>
-            )}
-            <button
-              onClick={handleLogout}
-              className="w-full px-4 py-2 rounded bg-[#FF604F] text-white font-semibold hover:bg-[#d44a3b] transition"
-            >
-              Log Out
-            </button>
           </nav>
         </div>
 
@@ -215,7 +204,8 @@ export function Navigation() {
   }
 
   return (
-    <header className="relative z-40 flex items-center justify-between p-1 md:pl-20 md:pr-20 bg-[#170A2D] text-white">
+    <header className="relative z-40 flex items-center justify-between pl-10 pr-10 bg-[#170A2D] text-white">
+      {" "}
       {/*LOGO  */}
       <div className="flex justify-between items-center">
         {/* Logo */}
@@ -231,7 +221,6 @@ export function Navigation() {
           </Link>
         </div>
       </div>
-
       {/* Desktop Navigation */}
       <nav className="hidden md:flex gap-10 font-semibold text-xl items-center">
         {pages.map((page, index) => (
@@ -246,7 +235,6 @@ export function Navigation() {
           </Link>
         ))}
       </nav>
-
       {/* Mobile Hamburger Menu Icon */}
       <div className="md:hidden">
         <button onClick={toggleMenu} className="focus:outline-none">
@@ -265,7 +253,6 @@ export function Navigation() {
           </svg>
         </button>
       </div>
-
       {/* Sliding Mobile Navigation Menu */}
       <div
         ref={menuRef}
@@ -311,7 +298,6 @@ export function Navigation() {
           ))}
         </nav>
       </div>
-
       {/* Background overlay when menu is open */}
       {isMenuOpen && (
         <div

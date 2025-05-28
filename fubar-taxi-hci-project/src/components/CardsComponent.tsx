@@ -10,7 +10,7 @@ type CardProps = {
 
 export default function Card({ href, imageSrc, imageAlt, description }: CardProps) {
   return (
-    <div className="bg-gradient-to-b from-white to-[#FF604F] rounded-lg p-2 shadow-lg flex flex-col w-full md:w-[30%]">
+    <div className="bg-white/10 border border-white/20 backdrop-blur-md shadow-lg rounded-lg p-2 transition-colors flex flex-col w-full md:w-[30%]">
       {/* Clickable Image */}
       <div className="relative">
         <Link href={href} className="block overflow-hidden rounded-t-lg">
