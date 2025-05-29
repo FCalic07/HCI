@@ -1,18 +1,26 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import CardsSection from "@/components/CardsSection";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./styles.css";
 import Image from "next/image";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
+import { signOut } from "firebase/auth";
 
 export default function Home() {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
+
+  const [user] = useAuthState(auth);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+  };
 
   return (
     <>
@@ -41,14 +49,18 @@ export default function Home() {
           <p className="mt-4 text-xl sm:text-2xl text-fuchsia-200 font-light">
             INCREASE YOUR PRODUCTIVITY WITH OUR SERVICE
           </p>
-
+          { !user &&
           <Link href="/signin">
             <button className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
               <p>Sign In</p>
             </button>
           </Link>
-
-          <audio ref={audioRef} src="/assets/audio.mp3" preload="auto" />
+          }
+          { user &&
+            <button onClick={handleLogout} className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
+              <p>Sign Out</p>
+            </button>
+          }
         </main>
       </div>
 
