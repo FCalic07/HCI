@@ -75,7 +75,7 @@ export function Navigation() {
 
   const isAdminPage = pathname?.startsWith("/adminpage");
 
-  if (isAdminPage) {
+  if (isAdminPage && user) {
     return <AdminNavigation user={user} />;
   }
 
