@@ -7,16 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const LoginForm: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(false);
 
-  const [
-  signInWithEmailAndPassword, 
-  loading,                    
-  error                       
-] = useSignInWithEmailAndPassword(auth);
-
+  const [signInWithEmailAndPassword, loading ] = useSignInWithEmailAndPassword(auth);
 
   const router = useRouter();
 
@@ -25,17 +21,16 @@ const LoginForm: React.FC = () => {
     e.preventDefault();
 
     const res = await signInWithEmailAndPassword(email, password);
-    console.log(res);
-
-    console.log("error je " + error);
 
     if (res && res.user) {
       setEmail("");
       setPassword("");
+      setErrorMsg(false);
       sessionStorage.setItem("user", "true");
       return router.push("/adminpage/dashboard"); // Change to your desired route
+    } else {
+      setErrorMsg(true);
     }
-    // If error, it will be handled below
   };
 
   return (
@@ -59,7 +54,7 @@ const LoginForm: React.FC = () => {
           </h2>
 
           {/* Error Message */}
-          {error && (
+          {errorMsg && (
             <div className="mb-2 text-red-500 text-center">
               Wrong email or password!
             </div>
