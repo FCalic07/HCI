@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { signOut } from "firebase/auth";
+import { signOut, User } from "firebase/auth";
 import { auth } from "@/app/firebase/config";
 import ProfileModal from "./ProfileModal";
 
@@ -13,7 +13,7 @@ const adminPages = [
   { title: "Rides", path: "/adminpage/rides" },
 ];
 
-export default function AdminNavigation({ user }: { user: any }) {
+export default function AdminNavigation({ user }: { user: User }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const pathname = usePathname();
