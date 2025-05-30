@@ -24,7 +24,11 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div id="hero" className="relative md:min-h-screen w-screen h-[880px]" style={{ contentVisibility: 'auto' }}>
+      <div
+        id="hero"
+        className="relative md:min-h-screen w-screen h-[880px]"
+        style={{ contentVisibility: "auto" }}
+      >
         <Image
           src="/assets/backgroundPicture.webp"
           alt="Taxi company background"
@@ -37,8 +41,6 @@ export default function Home() {
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
         <div className="absolute inset-0 bg-black opacity-50"></div>
-
-
 
         {/* Main Content */}
         <main
@@ -57,7 +59,10 @@ export default function Home() {
           </p>
           {!user && (
             <Link href="/signin">
-              <button className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
+              <button
+                className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded"
+                aria-label="Sign In button"
+              >
                 <p>Sign In</p>
               </button>
             </Link>
@@ -66,6 +71,7 @@ export default function Home() {
             <button
               onClick={handleLogout}
               className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded"
+              aria-label="Sign Out button"
             >
               <p>Sign Out</p>
             </button>

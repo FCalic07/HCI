@@ -35,7 +35,7 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen bg-[url('/assets/backgroundPicture.jpg')] bg-cover bg-center bg-blend-darken">
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center bg-blend-darken">
       <img
         id="logo"
         src="/fubarLogo.svg"

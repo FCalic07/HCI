@@ -104,7 +104,7 @@ export function Navigation() {
             key={index}
             href={page.path}
             className={`nav-link-overline ${
-              isActive(page) ? "active text-[#FF604F]" : "hover:text-[#FF604F]"
+              isActive(page) ? "active text-[#FF7366]" : "hover:text-[#FF7366]"
             }`}
           >
             {page.title}
@@ -113,11 +113,15 @@ export function Navigation() {
       </nav>
       {/* Mobile Hamburger Menu Icon */}
       <div className="md:hidden">
-        <button onClick={toggleMenu} className="focus:outline-none" aria-label="Menu">
+        <button
+          onClick={toggleMenu}
+          className="focus:outline-none"
+          aria-label="Hamburger Menu"
+        >
           <svg
             className="w-8 h-8 text-white"
             fill="none"
-            stroke="#FF604F"
+            stroke="#FF7366"
             viewBox="0 0 24 24"
           >
             <path
@@ -139,7 +143,8 @@ export function Navigation() {
         {/* Close Button */}
         <button
           onClick={closeMenu}
-          className="p-4 focus:outline-none text-[#FF604F]"
+          className="p-4 focus:outline-none text-[#FF7366]"
+          aria-label="Close Menu button"
         >
           <svg
             className="w-6 h-6"
@@ -164,8 +169,8 @@ export function Navigation() {
               href={page.path}
               className={`nav-link-overline ${
                 isActive(page)
-                  ? "active text-[#FF604F]"
-                  : "hover:text-[#FF604F]"
+                  ? "active text-[#FF7366]"
+                  : "hover:text-[#FF7366]"
               }`}
               onClick={closeMenu}
               aria-label={page.title}
