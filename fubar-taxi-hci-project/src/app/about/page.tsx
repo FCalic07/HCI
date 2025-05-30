@@ -33,8 +33,8 @@ export default async function AboutPage() {
 
   return (
      <div
-      className="relative min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/assets/backgroundPicture.jpg')" }}
+      className="relative md:min-h-screen w-screen bg-cover bg-center"
+      style={{ backgroundImage: "url('/assets/backgroundPicture.webp')" }}
     >
       {/* Overlays for styling */}
       <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
