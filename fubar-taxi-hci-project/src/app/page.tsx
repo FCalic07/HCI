@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div id="hero" className="relative md:min-h-screen h-[900px]" style={{ contentVisibility: 'auto' }}>
+      <div id="hero" className="relative md:min-h-screen w-screen h-[880px]" style={{ contentVisibility: 'auto' }}>
         <Image
           src="/assets/backgroundPicture.webp"
           alt="Taxi company background"
@@ -32,7 +32,7 @@ export default function Home() {
           objectFit="cover"
           priority // triggers preload
           fetchPriority="high" // helps modern browsers prioritize LCP
-          className="z-0 h-[900px]"
+          className="z-0 h-[880px] w-screen"
         />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
