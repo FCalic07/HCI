@@ -11,7 +11,6 @@ import { auth } from "@/app/firebase/config";
 import { signOut } from "firebase/auth";
 
 export default function Home() {
-
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
@@ -25,11 +24,17 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div
-        id="hero"
-        className="relative min-h-screen bg-cover bg-center"
-        style={{ backgroundImage: "url('/assets/backgroundPicture.jpg')" }}
-      >
+      <div id="hero" className="relative min-h-screen">
+
+        <Image
+          src="/assets/backgroundPicture.jpg"
+          alt="Taxi company background"
+          layout="fill"
+          objectFit="cover"
+          priority // triggers preload
+          fetchPriority="high" // helps modern browsers prioritize LCP
+          className="z-0"
+        />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
         <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -49,18 +54,21 @@ export default function Home() {
           <p className="mt-4 text-xl sm:text-2xl text-fuchsia-200 font-light">
             INCREASE YOUR PRODUCTIVITY WITH OUR SERVICE
           </p>
-          { !user &&
-          <Link href="/signin">
-            <button className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
-              <p>Sign In</p>
-            </button>
-          </Link>
-          }
-          { user &&
-            <button onClick={handleLogout} className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
+          {!user && (
+            <Link href="/signin">
+              <button className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded">
+                <p>Sign In</p>
+              </button>
+            </Link>
+          )}
+          {user && (
+            <button
+              onClick={handleLogout}
+              className="mt-6 bg-red-500 hover:bg-red-700 text-white text-2xl font-semibold py-4 px-8 rounded"
+            >
               <p>Sign Out</p>
             </button>
-          }
+          )}
         </main>
       </div>
 
@@ -70,7 +78,8 @@ export default function Home() {
         className="
   bg-[#170A2D]
   text-white
-  py-24      
+  py-24
+  px-2      
   md:py-30    
   sm:pr-10  
   sm:pl-10
@@ -80,7 +89,7 @@ export default function Home() {
           {/* Left Image */}
           <div className="flex justify-center">
             <img
-              src="/assets/aboutUsPicture.jpg"
+              src="/assets/aboutUsPicture.webp"
               alt="About Us"
               className="max-w-4/5 h-auto rounded-lg shadow-lg"
             />
