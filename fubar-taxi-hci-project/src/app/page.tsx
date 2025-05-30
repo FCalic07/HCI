@@ -24,25 +24,15 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div id="hero" className="relative min-h-screen">
-
-        <Image
-          src="/assets/backgroundPictureMobile.webp"
-          alt="Taxi company background"
-          layout="fill"
-          objectFit="cover"
-          priority // triggers preload
-          fetchPriority="high" // helps modern browsers prioritize LCP
-          className="z-0 md:hidden"
-        />
+      <div id="hero" className="relative min-h-screen" style={{ contentVisibility: 'auto' }}>
         <Image
           src="/assets/backgroundPicture.webp"
           alt="Taxi company background"
-          layout="fill"
+          fill={true}
           objectFit="cover"
           priority // triggers preload
           fetchPriority="high" // helps modern browsers prioritize LCP
-          className="z-0 hidden md:flex"
+          className="z-0"
         />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
@@ -126,14 +116,6 @@ export default function Home() {
           className="md:py-0 py-16 bg-[#170A2D] text-white flex justify-center items-center"
         >
           {/* Logo background image for text effect (preloading handled by Next.js automatically) */}
-          <Image
-            src="/assets/sky.webp"
-            alt="Sky background for FUBAR logo text effect"
-            width={1920}
-            height={1080}
-            priority
-            style={{ display: "none" }}
-          />
           <h1
             className="bg-fixed bg-center font-extrabold uppercase text-transparent text-center text-7xl md:text-[10vw]"
             style={{

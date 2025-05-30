@@ -113,7 +113,7 @@ export function Navigation() {
       </nav>
       {/* Mobile Hamburger Menu Icon */}
       <div className="md:hidden">
-        <button onClick={toggleMenu} className="focus:outline-none">
+        <button onClick={toggleMenu} className="focus:outline-none" aria-label="Menu">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
@@ -168,6 +168,7 @@ export function Navigation() {
                   : "hover:text-[#FF604F]"
               }`}
               onClick={closeMenu}
+              aria-label={page.title}
             >
               {page.title}
             </Link>
