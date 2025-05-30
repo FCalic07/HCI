@@ -8,21 +8,21 @@ export default function CardsSection() {
         {/* Card 1 */}
         <Card
           href="#card1"
-          imageSrc="/assets/dispatcheer.jpg"
+          imageSrc="/assets/dispatcheer.webp"
           imageAlt="Dispatcher App"
           description="Dispatcher App"
         />
         {/* Card 2 */}
         <Card
           href="#card2"
-          imageSrc="/assets/happyWoman.jpg"
+          imageSrc="/assets/happyWoman.webp"
           imageAlt="Customized App"
           description="Customized App"
         />
         {/* Card 3 */}
         <Card
           href="#card3"
-          imageSrc="/assets/onphone.jpg"
+          imageSrc="/assets/onphone.webp"
           imageAlt="Taxi Mobile App"
           description="Taxi Mobile App"
         />

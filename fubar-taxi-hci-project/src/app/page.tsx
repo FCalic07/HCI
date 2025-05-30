@@ -27,17 +27,28 @@ export default function Home() {
       <div id="hero" className="relative min-h-screen">
 
         <Image
-          src="/assets/backgroundPicture.jpg"
+          src="/assets/backgroundPictureMobile.webp"
           alt="Taxi company background"
           layout="fill"
           objectFit="cover"
           priority // triggers preload
           fetchPriority="high" // helps modern browsers prioritize LCP
-          className="z-0"
+          className="z-0 md:hidden"
+        />
+        <Image
+          src="/assets/backgroundPicture.webp"
+          alt="Taxi company background"
+          layout="fill"
+          objectFit="cover"
+          priority // triggers preload
+          fetchPriority="high" // helps modern browsers prioritize LCP
+          className="z-0 hidden md:flex"
         />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
         <div className="absolute inset-0 bg-black opacity-50"></div>
+
+
 
         {/* Main Content */}
         <main
