@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -34,19 +32,10 @@ export default async function AboutPage() {
   const users = await getUsers();
 
   return (
-    <div
-        className="relative md:min-h-screen w-screen h-[880px]"
-        style={{ contentVisibility: "auto" }}
+     <div
+      className="relative min-h-screen bg-cover bg-center"
+      style={{ backgroundImage: "url('/assets/backgroundPicture.jpg')" }}
     >
-        <Image
-          src="/assets/backgroundPicture.webp"
-          alt="Taxi company background"
-          fill={true}
-          objectFit="cover"
-          priority // triggers preload
-          fetchPriority="high" // helps modern browsers prioritize LCP
-          className="z-0 h-[880px] w-screen"
-        />
       {/* Overlays for styling */}
       <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
       <div className="absolute inset-0 bg-black opacity-50"></div>
