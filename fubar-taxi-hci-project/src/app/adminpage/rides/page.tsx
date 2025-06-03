@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { fetchRides } from "@/lib/ridelogFetching";
+import { RideWithKey } from "@/lib/ridelogFetching";
 
 export default function RideTable() {
-  const [rides, setRides] = useState<any[]>([]);
-  const [filteredRides, setFilteredRides] = useState<any[]>([]);
+  const [rides, setRides] = useState<RideWithKey[]>([]);
+  const [filteredRides, setFilteredRides] = useState<RideWithKey[]>([]);
   const [loading, setLoading] = useState(true);
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
@@ -101,7 +102,7 @@ export default function RideTable() {
                 </td>
                 <td className="p-3">
                   {ride.pointB
-                    ? `${ride.pointB.latitude}, ${ride.pointB.longitude}`
+                    ? `${ride.pointB}`
                     : "N/A"}
                 </td>
                 <td className="p-3">{ride.price + "€" || "N/A"}</td>

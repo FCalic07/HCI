@@ -19,7 +19,7 @@ type Ride = {
 };
 
 
-type RideWithKey = Ride & { firebaseKey: string };
+export type RideWithKey = Ride & { firebaseKey: string };
 
 export const fetchRides = async (): Promise<RideWithKey[]> => {
   const reportRef = ref(db, "GellaTaxi/report");
