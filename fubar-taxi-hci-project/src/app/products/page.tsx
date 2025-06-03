@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { getProducts } from "@/components/ContentfulFetching";
+import { getProducts } from "@/lib/contentfulFetching";
 
 export const metadata: Metadata = {
   title: "What We Offer",
