@@ -26,7 +26,7 @@ export default function Home() {
       {/* Hero Section */}
       <div
         id="hero"
-        className="relative md:min-h-screen w-screen h-[880px]"
+        className="relative "
         style={{ contentVisibility: "auto" }}
       >
         <Image
