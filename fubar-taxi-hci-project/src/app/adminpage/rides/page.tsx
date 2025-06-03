@@ -86,7 +86,10 @@ export default function RideTable() {
               </tr>
             )}
             {filteredRides.map((ride) => (
-              <tr className="border-b border-gray-700 hover:bg-[#33334d]">
+              <tr
+                className="border-b border-gray-700 hover:bg-[#33334d]"
+                key={ride.firebaseKey}
+              >
                 <td className="p-3">{ride.id || "N/A"}</td>
                 <td className="p-3">{ride.description || "N/A"}</td>
                 <td className="p-3">{ride.startTime || "N/A"}</td>
