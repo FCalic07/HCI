@@ -5,7 +5,6 @@ import CardsSection from "@/components/CardsSection";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./styles.css";
-import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
 import { signOut } from "firebase/auth";
