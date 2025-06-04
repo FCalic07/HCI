@@ -8,6 +8,7 @@ import "./styles.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
 import { signOut } from "firebase/auth";
+import Head from "next/head";
 
 export default function Home() {
   useEffect(() => {
@@ -23,6 +24,10 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
+      <Head>
+        <link rel="preload" href="/assets/backgroundPictureMobile.webp" as="image" />
+        <link rel="preload" href="/assets/backgroundPicture.webp" as="image" />
+      </Head>
       <div
         id="hero"
         className="relative md:min-h-screen h-[880px] md:max-w-screen bg-[url('/assets/backgroundPictureMobile.webp')] md:bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center"
@@ -94,7 +99,9 @@ export default function Home() {
 
           {/* Right Content */}
           <div className="md:px-0 px-4 flex-1 flex-col justify-start">
-            <h2 className="text-4xl sm:text-7xl font-bold md:text-start text-center mb-6">About Us</h2>
+            <h2 className="text-4xl sm:text-7xl font-bold md:text-start text-center mb-6">
+              About Us
+            </h2>
             <p className="text-2xl tracking-wide leading-relaxed text-gray-200 ">
               Welcome to FUBAR, a passionate team of developers dedicated to
               improving taxi services in Bosnia and Herzegovina. Our goal is to
