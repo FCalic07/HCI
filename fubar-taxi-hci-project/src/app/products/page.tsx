@@ -38,17 +38,22 @@ export default async function AboutPage() {
 
   return (
      <div
-      className="relative md:min-h-screen w-screen bg-cover bg-center"
+      className="relative md:min-h-screen max-w-screen bg-cover bg-center"
       style={{ backgroundImage: "url('/assets/backgroundPicture.webp')" }}
     >
       {/* Overlays for styling */}
       <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
-      <main className="flex min-h-screen flex-col items-center p-10 z-10">
-        <h1 className="text-white mb-10 text-6xl font-extrabold tracking-tight z-10">
-          What We Offer
+      <main className="relative flex flex-col items-center py-10 px-6 z-10">
+        <h1 className="text-white text-5xl md:font-extrabold font-bold text-center tracking-tight mb-8">
+          What we offer
         </h1>
+        <p className="text-fuchsia-200 text-xl mb-10 text-center max-w-4xl">
+          Discover the key features designed to help your taxi company thrive.
+        </p>
+
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full max-w-5xl">
           {items
             .slice()
@@ -82,7 +87,7 @@ export default async function AboutPage() {
               return (
                 <div
                   key={item.sys.id || idx}
-                  className="relative bg-white/10 border border-white/20 backdrop-blur-md shadow-lg rounded-lg p-6 flex flex-col items-center  transition-colors duration-300 hover:scale-105 hover:bg-white/20"
+                  className="relative bg-white/10 border border-white/20 backdrop-blur-md shadow-lg rounded-lg md:p-6 p-4 flex flex-col items-center  transition-colors duration-300 hover:scale-105 hover:bg-white/20"
                 >
                   {iconUrl ? (
                     <Image

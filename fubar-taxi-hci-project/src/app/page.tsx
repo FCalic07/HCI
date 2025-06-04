@@ -92,7 +92,7 @@ export default function Home() {
   sm:pl-10
 "
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-16 gap-8 items-center">
           {/* Left Image */}
           <div className="flex justify-center">
             <img
@@ -103,9 +103,9 @@ export default function Home() {
           </div>
 
           {/* Right Content */}
-          <div className="flex-1 flex-col justify-start">
-            <h2 className="text-4xl sm:text-7xl font-bold mb-6">About Us</h2>
-            <p className="text-2xl tracking-wide leading-relaxed text-gray-200">
+          <div className="md:px-0 px-4 flex-1 flex-col justify-start">
+            <h2 className="text-4xl sm:text-7xl font-bold md:text-start text-center mb-6">About Us</h2>
+            <p className="text-2xl tracking-wide leading-relaxed text-gray-200 ">
               Welcome to FUBAR, a passionate team of developers dedicated to
               improving taxi services in Bosnia and Herzegovina. Our goal is to
               create innovative, secure, and efficient taxi applications,
@@ -119,7 +119,7 @@ export default function Home() {
       {
         <section
           id="fubar"
-          className="md:py-0 py-16 bg-[#170A2D] text-white flex justify-center items-center"
+          className="md:pt-16 md:pb-0 pb-4 bg-[#170A2D] text-white flex justify-center items-center"
         >
           {/* Logo background image for text effect (preloading handled by Next.js automatically) */}
           <h1

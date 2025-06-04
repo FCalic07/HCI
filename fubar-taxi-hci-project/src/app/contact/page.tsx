@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
      <div
-      className="relative md:min-h-screen w-screen bg-cover bg-center"
+      className="relative md:min-h-screen max-w-screen bg-cover bg-center"
       style={{ backgroundImage: "url('/assets/backgroundPicture.webp')" }}
     >
       {/* Overlays for styling */}
@@ -57,7 +57,7 @@ export default function ContactPage() {
 
             {/* Email input */}
             <div className="flex flex-col">
-              <label className="text-lg font-semibold">Your Email</label>
+              <label className="text-lg font-semibold pb-2">Your Email</label>
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -68,7 +68,7 @@ export default function ContactPage() {
 
             {/* Message input */}
             <div className="flex flex-col">
-              <label className="text-lg font-semibold">Your Message</label>
+              <label className="text-lg font-semibold pb-2">Your Message</label>
               <textarea
                 placeholder="Write your message here..."
                 className="p-3 rounded-md bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF604F] h-32 resize-none"

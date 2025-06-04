@@ -80,7 +80,7 @@ export function Navigation() {
   }
 
   return (
-    <header className="relative z-40 flex items-center justify-between pl-10 pr-10 bg-[#170A2D] text-white">
+    <header className="relative z-40 flex items-center justify-between md:px-10 px-6 bg-[#170A2D] text-white">
       {" "}
       {/*LOGO  */}
       <div className="flex justify-between items-center">
