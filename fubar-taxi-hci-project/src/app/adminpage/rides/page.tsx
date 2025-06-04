@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchRides } from "@/lib/ridelogFetching";
-import { RideWithKey } from "@/lib/ridelogFetching";
+import { fetchRides, RideWithKey } from "@/lib/ridelogFetching";
+import RideLogs from "@/components/RideLogs";
 
 export default function RideTable() {
   const [rides, setRides] = useState<RideWithKey[]>([]);
@@ -15,60 +15,63 @@ export default function RideTable() {
     const loadRides = async () => {
       const data = await fetchRides();
       setRides(data);
-      setFilteredRides(data); // initially show all
+      setFilteredRides(data);
       setLoading(false);
     };
-
     loadRides();
   }, []);
 
   useEffect(() => {
     if (!loading) {
-      const filteredRides = rides.filter((ride) => {
+      const filtered = rides.filter((ride) => {
         const match = ride.startTime.match(/(\d{2})\/(\d{2})\/(\d{4})/);
         const start = match ? `${match[3]}-${match[2]}-${match[1]}` : "";
-
         const isAfterFrom = !fromDate || start >= fromDate;
         const isBeforeTo = !toDate || start <= toDate;
-
         return isAfterFrom && isBeforeTo;
       });
-
-      setFilteredRides(filteredRides);
+      setFilteredRides(filtered);
     }
   }, [fromDate, toDate, rides]);
 
-  if (loading) return <div className="text-white">Loading rides...</div>;
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#170A2D] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+      </div>
+    );
+  }
 
   return (
-    <div className="h-screen flex flex-col text-white p-4 bg-[#170A2D]">
+    <div className="min-h-screen bg-gray-50 p-4">
       {/* Filters */}
-      <div className="mb-4 flex gap-4 items-center">
-        <label>
-          From:{" "}
+      <div className="mb-4 flex gap-4 flex-wrap">
+        <label className="text-black">
+          From:
           <input
             type="date"
             value={fromDate}
             onChange={(e) => setFromDate(e.target.value)}
-            className="text-black px-2 py-1 rounded"
+            className="text-black ml-2 px-2 py-1 rounded"
           />
         </label>
-        <label>
-          To:{" "}
+        <label className="text-black">
+          To:
           <input
             type="date"
             value={toDate}
             onChange={(e) => setToDate(e.target.value)}
-            className="text-black px-2 py-1 rounded"
+            className="text-black ml-2 px-2 py-1 rounded"
           />
         </label>
       </div>
 
-      {/* Scrollable Table */}
-      <div className="overflow-y-auto flex-1 rounded border border-gray-700">
-        <table className="min-w-full bg-[#1e1e2f]">
+      {/* Table Wrapper */}
+      <div className="overflow-y-auto flex-1 rounded-md">
+        {/* Desktop Table */}
+        <table className="min-w-full hidden md:table bg-white rounded-md">
           <thead>
-            <tr className="bg-[#2c2c3e] text-left text-sm uppercase text-gray-400 sticky top-0">
+            <tr className="bg-gray-200 text-left text-sm uppercase text-gray-600 sticky top-0">
               <th className="p-3">Driver ID</th>
               <th className="p-3">Description</th>
               <th className="p-3">Start Time</th>
@@ -79,37 +82,32 @@ export default function RideTable() {
             </tr>
           </thead>
           <tbody>
-            {filteredRides.length === 0 && (
+            {filteredRides.length === 0 ? (
               <tr>
-                <td colSpan={6} className="p-4 text-center text-gray-400">
+                <td colSpan={7} className="p-4 text-center text-gray-500">
                   No rides found for selected range.
                 </td>
               </tr>
+            ) : (
+              filteredRides.map((ride) => (
+                <RideLogs key={ride.firebaseKey} ride={ride} />
+              ))
             )}
-            {filteredRides.map((ride) => (
-              <tr
-                className="border-b border-gray-700 hover:bg-[#33334d]"
-                key={ride.firebaseKey}
-              >
-                <td className="p-3">{ride.id || "N/A"}</td>
-                <td className="p-3">{ride.description || "N/A"}</td>
-                <td className="p-3">{ride.startTime || "N/A"}</td>
-                <td className="p-3">{ride.endTime || "N/A"}</td>
-                <td className="p-3">
-                  {ride.pointA
-                    ? `${ride.pointA.latitude}, ${ride.pointA.longitude}`
-                    : "N/A"}
-                </td>
-                <td className="p-3">
-                  {ride.pointB
-                    ? `${ride.pointB}`
-                    : "N/A"}
-                </td>
-                <td className="p-3">{ride.price + "€" || "N/A"}</td>
-              </tr>
-            ))}
           </tbody>
         </table>
+
+        {/* Mobile Cards */}
+        <div className="flex flex-col gap-1 md:hidden">
+          {filteredRides.length === 0 ? (
+            <div className="text-center text-gray-400 py-4">
+              No rides found for selected range.
+            </div>
+          ) : (
+            filteredRides.map((ride) => (
+              <RideLogs key={ride.firebaseKey} ride={ride} />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

@@ -10,7 +10,9 @@ import ProfileModal from "./ProfileModal";
 const adminPages = [
   { title: "Home Page", path: "/" },
   { title: "Dashboard", path: "/adminpage/dashboard" },
-  { title: "Rides", path: "/adminpage/rides" },
+  { title: "Rides",     path: "/adminpage/rides" },
+  { title: "Income",    path: "/adminpage/income" },
+  { title: "Employees", path: "/adminpage/employees" },
 ];
 
 export default function AdminNavigation({ user }: { user: User }) {

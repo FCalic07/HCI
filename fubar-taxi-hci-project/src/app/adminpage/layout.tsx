@@ -44,7 +44,7 @@ export default function AdminLayout({
       <Sidebar>
         <SidebarItem
           icon={faCar}
-          label="Taxi"
+          label="Dashboard"
           href="/adminpage/dashboard"
         />
         <SidebarItem
