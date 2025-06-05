@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchRides, RideWithKey } from "@/lib/ridelogFetching";
-import RideLogs from "@/components/RideLogs";
+import { fetchRides, RideWithKey } from "./_lib/api";
+import RideLogs from "./_components/rideLogInfo";
+import Pagination from "./_components/pagination";
+
+const PAGE_SIZE = 12;
 
 export default function RideTable() {
   const [rides, setRides] = useState<RideWithKey[]>([]);
@@ -10,6 +13,11 @@ export default function RideTable() {
   const [loading, setLoading] = useState(true);
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(filteredRides.length / PAGE_SIZE);
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const currentRides = filteredRides.slice(startIndex, startIndex + PAGE_SIZE);
 
   useEffect(() => {
     const loadRides = async () => {
@@ -31,8 +39,9 @@ export default function RideTable() {
         return isAfterFrom && isBeforeTo;
       });
       setFilteredRides(filtered);
+      setCurrentPage(1); // reset to first page when filtering
     }
-  }, [fromDate, toDate, rides]);
+  }, [fromDate, toDate, rides, loading]);
 
   if (loading) {
     return (
@@ -67,7 +76,7 @@ export default function RideTable() {
       </div>
 
       {/* Table Wrapper */}
-      <div className="overflow-y-auto flex-1 rounded-md">
+      <div className="overflow-auto h-full rounded-md">
         {/* Desktop Table */}
         <table className="min-w-full hidden md:table bg-white rounded-md">
           <thead>
@@ -82,14 +91,14 @@ export default function RideTable() {
             </tr>
           </thead>
           <tbody>
-            {filteredRides.length === 0 ? (
+            {currentRides.length === 0 ? (
               <tr>
                 <td colSpan={7} className="p-4 text-center text-gray-500">
                   No rides found for selected range.
                 </td>
               </tr>
             ) : (
-              filteredRides.map((ride) => (
+              currentRides.map((ride) => (
                 <RideLogs key={ride.firebaseKey} ride={ride} />
               ))
             )}
@@ -98,16 +107,23 @@ export default function RideTable() {
 
         {/* Mobile Cards */}
         <div className="flex flex-col gap-1 md:hidden">
-          {filteredRides.length === 0 ? (
+          {currentRides.length === 0 ? (
             <div className="text-center text-gray-400 py-4">
               No rides found for selected range.
             </div>
           ) : (
-            filteredRides.map((ride) => (
+            currentRides.map((ride) => (
               <RideLogs key={ride.firebaseKey} ride={ride} />
             ))
           )}
         </div>
+
+        {/* Pagination */}
+        <Pagination
+          currentPage={currentPage}
+          pagesCount={totalPages}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </div>
     </div>
   );

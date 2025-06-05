@@ -18,7 +18,6 @@ type Ride = {
   // add more fields as needed based on your data
 };
 
-
 export type RideWithKey = Ride & { firebaseKey: string };
 
 export const fetchRides = async (): Promise<RideWithKey[]> => {
