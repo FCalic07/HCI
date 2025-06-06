@@ -30,7 +30,18 @@ export default function Home() {
           href="/assets/backgroundPictureMobile.webp"
           as="image"
         />
-        <link rel="preload" href="/assets/backgroundPicture.webp" as="image" />
+        <link 
+          rel="preload" 
+          href="/assets/backgroundPicture.webp" 
+          as="image" />
+        <link 
+          rel="preload" 
+          href="/assets/backgroundPictureMobileHero.webp" 
+          as="image" />
+        <link 
+          rel="preload" 
+          href="/assets/backgroundPictureHero.webp" 
+          as="image" />
       </Head>
       <div
         id="hero"
