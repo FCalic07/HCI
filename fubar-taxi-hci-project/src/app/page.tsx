@@ -25,18 +25,22 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <Head>
-        <link rel="preload" href="/assets/backgroundPictureMobile.webp" as="image" />
+        <link
+          rel="preload"
+          href="/assets/backgroundPictureMobile.webp"
+          as="image"
+        />
         <link rel="preload" href="/assets/backgroundPicture.webp" as="image" />
       </Head>
       <div
         id="hero"
-        className="relative md:min-h-screen h-[880px] md:max-w-screen bg-[url('/assets/backgroundPictureMobile.webp')] md:bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center"
+        className="relative md:min-h-screen h-[880px] md:max-w-screen bg-[url('/assets/backgroundPictureMobileHero.webp')] md:bg-[url('/assets/backgroundPictureHero.webp')] bg-cover bg-center"
         style={{ contentVisibility: "auto" }}
       >
-        {/* Dark overlay */}
+        {/* Dark overlay 
         <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
         <div className="absolute inset-0 bg-black opacity-50"></div>
-
+        */}
         {/* Main Content */}
         <main
           className="relative z-10 flex flex-col items-start p-8 sm:p-10 min-h-screen text-white"
@@ -74,11 +78,11 @@ export default function Home() {
         </main>
       </div>
 
+        <div className="bg-gradient-to-b from-[#110722] to-[#170A2D] ">
       {/* About Us Section */}
       <section
         id="about"
         className="
-  bg-[#170A2D]
   text-white
   py-24
   px-2      
@@ -116,7 +120,7 @@ export default function Home() {
       {
         <section
           id="fubar"
-          className="md:pt-16 md:pb-0 pb-4 bg-[#170A2D] text-white flex justify-center items-center"
+          className="md:pt-16 md:pb-0 pb-4 text-white flex justify-center items-center"
         >
           {/* Logo background image for text effect (preloading handled by Next.js automatically) */}
           <h1
@@ -140,6 +144,7 @@ export default function Home() {
       <section id="cards">
         <CardsSection />
       </section>
+      </div>
     </>
   );
 }

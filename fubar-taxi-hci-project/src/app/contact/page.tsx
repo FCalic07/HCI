@@ -7,22 +7,17 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-     <div
-      className="relative md:min-h-screen max-w-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/assets/backgroundPicture.webp')" }}
-    >
-      {/* Overlays for styling */}
-      <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-
+    <div className="relative md:min-h-screen max-w-screen bg-[url('/assets/backgroundPictureMobile.webp')] md:bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center">
       {/* Main content container */}
       <main className="relative z-10 flex flex-col items-center mx-auto w-full max-w-5xl text-white gap-10 p-10 px-6">
         {/* Header Section (aligned left within centered container) */}
         <div className="max-w-lg">
-          <h1 className="text-5xl font-extrabold text-center mb-8">Contact Us</h1>
+          <h1 className="text-5xl font-extrabold text-center mb-8">
+            Contact Us
+          </h1>
           <p className="text-fuchsia-200 text-xl text-center">
-            Our customer support team is available to assist you.
-            We will get back to you as soon as possible.
+            Our customer support team is available to assist you. We will get
+            back to you as soon as possible.
           </p>
         </div>
 

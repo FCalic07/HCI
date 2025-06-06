@@ -35,16 +35,17 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center bg-blend-darken">
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-[url('/assets/backgroundPictureMobile.webp')] md:bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center ">
       <img
         id="logo"
         src="/fubarLogo.svg"
         alt="Logo"
         className="h-20 w-auto mb-4 z-10 relative"
       />
+      {/** 
       <div className="absolute inset-0 bg-violet-950 opacity-60 z-0"></div>
       <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
-
+*/}
       <div className="relative w-96 h-[420px] rounded-lg overflow-hidden">
         <form
           onSubmit={handleSignIn}

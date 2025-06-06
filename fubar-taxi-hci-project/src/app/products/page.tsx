@@ -37,14 +37,7 @@ export default async function AboutPage() {
   console.log(items);
 
   return (
-     <div
-      className="relative md:min-h-screen max-w-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/assets/backgroundPicture.webp')" }}
-    >
-      {/* Overlays for styling */}
-      <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-
+    <div className="relative md:min-h-screen max-w-screen bg-[url('/assets/backgroundPictureMobile.webp')] md:bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center">
       <main className="relative flex flex-col items-center py-10 px-6 z-10">
         <h1 className="text-white text-5xl md:font-extrabold font-bold text-center tracking-tight mb-8">
           What we offer
@@ -52,7 +45,6 @@ export default async function AboutPage() {
         <p className="text-fuchsia-200 text-xl mb-10 text-center max-w-4xl">
           Discover the key features designed to help your taxi company thrive.
         </p>
-
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full max-w-5xl">
           {items

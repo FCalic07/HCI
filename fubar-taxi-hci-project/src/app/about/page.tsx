@@ -33,13 +33,8 @@ export default async function AboutPage() {
 
   return (
      <div
-      className="relative md:min-h-screen max-w-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/assets/backgroundPicture.webp')" }}
+      className="relative md:min-h-screen max-w-screen bg-[url('/assets/backgroundPictureMobile.webp')] md:bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center"
     >
-      {/* Overlays for styling */}
-      <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-
       <main className="relative flex flex-col items-center p-10 px-6 z-10">
         {/* Title */}
         <h1 className="text-white text-5xl md:font-extrabold font-bold text-center tracking-tight mb-8">

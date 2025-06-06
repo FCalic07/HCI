@@ -3,7 +3,7 @@ import Card from "./CardsComponent";
 
 export default function CardsSection() {
   return (
-    <section className="bg-[#170A2D] px-8 py-20 md:py-52">
+    <section className="px-8 py-20 md:py-52">
       <div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-8">
         {/* Card 1 */}
         <Card
