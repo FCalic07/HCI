@@ -34,24 +34,13 @@ export default function Home() {
           rel="preload" 
           href="/assets/backgroundPicture.webp" 
           as="image" />
-        <link 
-          rel="preload" 
-          href="/assets/backgroundPictureMobileHero.webp" 
-          as="image" />
-        <link 
-          rel="preload" 
-          href="/assets/backgroundPictureHero.webp" 
-          as="image" />
       </Head>
       <div
         id="hero"
-        className="relative md:min-h-screen h-[880px] md:max-w-screen bg-[url('/assets/backgroundPictureMobileHero.webp')] md:bg-[url('/assets/backgroundPictureHero.webp')] bg-cover bg-center"
+        className="relative md:min-h-screen h-[880px] md:max-w-screen bg-[url('/assets/backgroundPictureMobile.webp')] md:bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center"
         style={{ contentVisibility: "auto" }}
       >
-        {/* Dark overlay 
-        <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        */}
+      <div className="absolute inset-0 mt-[400px] bg-gradient-to-b from-transparent to-[#110722] z-0" />
         {/* Main Content */}
         <main
           className="relative z-10 flex flex-col items-start p-8 sm:p-10 min-h-screen text-white"

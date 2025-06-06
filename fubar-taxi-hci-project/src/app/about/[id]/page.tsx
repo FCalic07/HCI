@@ -8,16 +8,16 @@ export const metadata: Metadata = {
   title: "Partner",
 };
 
-type UserParams = Promise<{ id: string }>
+type UserParams = Promise<{ id: string }>;
 
 async function getUser(id: string): Promise<User> {
-    const data = await fetch(`${process.env.BASE_API_URL}/users/${id}`);
-    if (!data.ok) {
-      throw new Error("Failed to fetch users");
-    }
-    return data.json();
-};
-  
+  const data = await fetch(`${process.env.BASE_API_URL}/users/${id}`);
+  if (!data.ok) {
+    throw new Error("Failed to fetch users");
+  }
+  return data.json();
+}
+
 export default async function PartnersPost(props: { params: UserParams }) {
   const { id } = await props.params;
   const user = await getUser(id);
@@ -29,17 +29,10 @@ export default async function PartnersPost(props: { params: UserParams }) {
   }
 
   return (
-    <div
-      className="relative min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/assets/backgroundPicture.jpg')" }}
-    >
-      {/* Overlays for styling */}
-      <div className="absolute inset-0 bg-violet-950 opacity-60"></div>
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-
+    <div className="relative md:min-h-screen max-w-screen bg-[url('/assets/backgroundPictureMobile.webp')] md:bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center">
       <main className="relative flex items-start justify-center min-h-screen p-10 z-10">
         {/* Glass Card */}
-        <div className="bg-white/10 border border-white/20 backdrop-blur-md rounded-lg p-10 max-w-4xl w-full text-center text-white flex flex-col">
+        <div className="bg-white/10 border border-white/20 backdrop-blur-md rounded-lg mt-24 p-10 max-w-4xl w-full text-center text-white flex flex-col">
           {/* Back to All Partners */}
           <Link
             href="/about"
