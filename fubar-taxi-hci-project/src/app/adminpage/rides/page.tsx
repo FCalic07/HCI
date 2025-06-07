@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { fetchRides, RideWithKey } from "./_lib/api";
 import RideLogs from "./_components/rideLogInfo";
 import Pagination from "./_components/pagination";
+import DateRangePicker from "./_components/dateRangePicker";
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 10;
 
 export default function RideTable() {
   const [rides, setRides] = useState<RideWithKey[]>([]);
@@ -54,29 +55,14 @@ export default function RideTable() {
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       {/* Filters */}
-      <div className="mb-4 flex gap-4 flex-wrap">
-        <label className="text-black">
-          From:
-          <input
-            type="date"
-            value={fromDate}
-            onChange={(e) => setFromDate(e.target.value)}
-            className="text-black ml-2 px-2 py-1 rounded"
-          />
-        </label>
-        <label className="text-black">
-          To:
-          <input
-            type="date"
-            value={toDate}
-            onChange={(e) => setToDate(e.target.value)}
-            className="text-black ml-2 px-2 py-1 rounded"
-          />
-        </label>
-      </div>
-
+      <DateRangePicker
+        fromDate={fromDate}
+        toDate={toDate}
+        setFromDate={setFromDate}
+        setToDate={setToDate}
+      />
       {/* Table Wrapper */}
-      <div className="overflow-auto h-full rounded-md">
+      <div className="flex-col overflow-auto h-full rounded-md">
         {/* Desktop Table */}
         <table className="min-w-full hidden md:table bg-white rounded-md">
           <thead>

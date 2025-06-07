@@ -40,7 +40,7 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-black text-white">
+    <div className="flex min-h-screen bg-[#170A2D] text-white">
       <Sidebar>
         <SidebarItem
           icon={faCar}

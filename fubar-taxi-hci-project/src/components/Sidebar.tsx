@@ -15,10 +15,9 @@ export default function Sidebar({ children }: SidebarProps) {
         transition-all duration-300 ease-in-out
         overflow-hidden                  /* clip label when collapsed */
         group                             /* enables group-hover on descendants */
-        
       "
     >
-      <nav className="flex-1 overflow-y-auto">{children}</nav>
+      <nav className="flex-1 overflow-y-auto scrollbar-hide">{children}</nav>
     </aside>
   );
 }

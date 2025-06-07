@@ -13,7 +13,7 @@ export default function Pagination({
   const isLastPage = currentPage === pagesCount;
 
   return (
-    <div className="w-full max-w-2xl mb-6">
+    <div className="justify-self-center mt-2 w-full max-w-2xl mb-6">
       <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-4 flex justify-between items-center">
         <button
           onClick={() => !isFirstPage && onPageChange(currentPage - 1)}

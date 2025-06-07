@@ -6,9 +6,10 @@
 
   export default function RideLogs({ ride }: Props) {
     const pointA = ride.pointA
-      ? `${ride.pointA.latitude}, ${ride.pointA.longitude}`
+      ? `${ride.pointA.latitude.toFixed(6)}, ${ride.pointA.longitude.toFixed(6)}`
       : "N/A";
 
+      const pointBFixed = ride.pointB?.toString().split(',')
     return (
       <>
         {/* Desktop row */}
@@ -18,7 +19,7 @@
           <td className="p-3">{ride.startTime || "N/A"}</td>
           <td className="p-3">{ride.endTime || "N/A"}</td>
           <td className="p-3">{pointA}</td>
-          <td className="p-3">{ride.pointB ? `${ride.pointB}` : "N/A"}</td>
+          <td className="p-3">{pointBFixed ? `${Number(pointBFixed[0]).toFixed(6)}, ${Number(pointBFixed[1]).toFixed(6)}` : "N/A"}</td>
           <td className="p-3">{ride.price} KM</td>
         </tr>
         {/* Mobile card */}
