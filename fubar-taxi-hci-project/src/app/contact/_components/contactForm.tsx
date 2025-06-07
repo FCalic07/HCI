@@ -4,8 +4,8 @@ export default function ContactForm() {
 
   const handleFormSubmitted = (event: React.FormEvent) => {
     event.preventDefault();
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+    const email = (document.getElementById('email') as HTMLInputElement)?.value;
+    const message = (document.getElementById('message') as HTMLTextAreaElement)?.value;
 
 
     fetch('/api/send-email', {
