@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import ContactForm from "./_components/contactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
 };
 
 export default function ContactPage() {
+
   return (
     <div className="relative md:min-h-screen max-w-screen bg-[url('/assets/backgroundPictureMobile.webp')] md:bg-[url('/assets/backgroundPicture.webp')] bg-cover bg-center">
       {/* Main content container */}
@@ -46,39 +48,8 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right side - Contact Form */}
-          <form className="backdrop-blur-md bg-white/10 border border-white/20 rounded-lg p-8 flex flex-col gap-6 shadow-lg">
-            <h2 className="text-3xl font-semibold">Send us a message</h2>
+          <ContactForm/>
 
-            {/* Email input */}
-            <div className="flex flex-col">
-              <label className="text-lg font-semibold pb-2">Your Email</label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="p-3 rounded-md bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF604F]"
-                required
-              />
-            </div>
-
-            {/* Message input */}
-            <div className="flex flex-col">
-              <label className="text-lg font-semibold pb-2">Your Message</label>
-              <textarea
-                placeholder="Write your message here..."
-                className="p-3 rounded-md bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF604F] h-32 resize-none"
-                required
-              />
-            </div>
-
-            {/* Send Button */}
-            <button
-              type="submit"
-              className="bg-[#FF604F] hover:bg-[#ff4433] transition-colors text-white font-semibold p-3 rounded-lg shadow-md"
-            >
-              Send Message
-            </button>
-          </form>
         </div>
       </main>
     </div>
