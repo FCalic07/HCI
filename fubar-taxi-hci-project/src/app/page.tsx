@@ -27,8 +27,10 @@ export default function Home() {
       <Head>
         <link
           rel="preload"
-          href="/assets/backgroundPictureMobile.webp"
+          fetchPriority="high"
           as="image"
+          href="/assets/backgroundPictureMobile.webp"
+          type="image/webp"
         />
         <link 
           rel="preload" 
