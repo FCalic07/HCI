@@ -42,8 +42,7 @@ const EmployeesComponent: React.FC = () => {
   const getStateLabel = (state: number) => {
     switch (state) {
       case 0: return { label: 'Available', color: 'bg-green-100 text-green-800' };
-      case 1: return { label: 'Busy', color: 'bg-yellow-100 text-yellow-800' };
-      case 2: return { label: 'Offline', color: 'bg-red-100 text-red-800' };
+      case 2: return { label: 'On brake', color: 'bg-yellow-100 text-yellow-800' };
       default: return { label: 'Unknown', color: 'bg-gray-100 text-gray-800' };
     }
   };
@@ -80,7 +79,7 @@ const EmployeesComponent: React.FC = () => {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 justify-between items-stretch">
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center">
               <div className="p-2 bg-blue-100 rounded-lg">
@@ -119,33 +118,19 @@ const EmployeesComponent: React.FC = () => {
                 </svg>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Busy</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {drivers.filter(driver => driver.state === 1).length}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center">
-              <div className="p-2 bg-red-100 rounded-lg">
-                <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728" />
-                </svg>
-              </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Offline</p>
+                <p className="text-sm font-medium text-gray-600">On brake</p>
                 <p className="text-2xl font-bold text-gray-900">
                   {drivers.filter(driver => driver.state === 2).length}
                 </p>
               </div>
             </div>
           </div>
+
+
         </div>
 
         {/* Driver Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {drivers.map((driver) => {
             const stateInfo = getStateLabel(driver.state);
             return (
@@ -216,7 +201,7 @@ const EmployeesComponent: React.FC = () => {
                       <div className="text-xs text-gray-600 space-y-1">
                         <div>Lat: {driver.coords.latitude.toFixed(6)}</div>
                         <div>Lng: {driver.coords.longitude.toFixed(6)}</div>
-                        <a 
+                        {/* <a 
                           href={`https://www.google.com/maps?q=${driver.coords.latitude},${driver.coords.longitude}`}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -226,7 +211,7 @@ const EmployeesComponent: React.FC = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                           </svg>
                           View on Map
-                        </a>
+                        </a> */}
                       </div>
                     </div>
                   </div>
