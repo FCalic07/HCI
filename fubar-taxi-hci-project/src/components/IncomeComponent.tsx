@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarOn } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 import {
   Chart,
   CategoryScale,
@@ -69,16 +70,6 @@ const monthNamesCroatian = [
   "Prosinac",
 ];
 
-const daysInCroatian = [
-  "Nedjelja",
-  "Ponedjeljak",
-  "Utorak",
-  "Srijeda",
-  "Četvrtak",
-  "Petak",
-  "Subota",
-];
-
 function formatDateToDDMMYYYY(date: Date) {
   const day = date.getDate();
   const month = date.getMonth() + 1;
@@ -91,7 +82,7 @@ function formatDateToDDMMYYYY(date: Date) {
 const IncomeComponent: React.FC = () => {
   const [drivers, setDrivers] = useState<Driver[]>([]);
   const [incomeStats, setIncomeStats] = useState<IncomeStats | null>(null);
-  const [today, setToday] = useState(new Date());
+  const today = new Date();
 
   useEffect(() => {
     const db = getDatabase();
@@ -204,7 +195,7 @@ const IncomeComponent: React.FC = () => {
         incomes,
       });
     });
-  }, [today]);
+  }, [setDrivers]);
 
   if (!incomeStats) {
     return (
@@ -248,10 +239,12 @@ const IncomeComponent: React.FC = () => {
                 <h2 className="text-xl font-bold text-yellow-400 tracking-wide drop-shadow">
                   FUBAR Taxi
                 </h2>
-                <img
+                <Image
                   src="https://cdn-icons-png.flaticon.com/512/1436/1436392.png"
-                  className="w-10 h-10 opacity-90 drop-shadow"
+                  className="opacity-90 drop-shadow"
                   alt="icon"
+                  width={30}
+                  height={30}
                 />
               </div>
 
@@ -267,10 +260,12 @@ const IncomeComponent: React.FC = () => {
 
               {/* Bottom */}
               <div className="flex justify-end items-end">
-                <img
+                <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
                   alt="Visa"
-                  className="w-14 h-8 object-contain drop-shadow"
+                  className="object-contain drop-shadow"
+                  height={70}
+                  width={70}
                 />
               </div>
             </div>
@@ -295,10 +290,12 @@ const IncomeComponent: React.FC = () => {
                 <h2 className="text-xl font-bold text-red-600 tracking-wide drop-shadow">
                   FUBAR Taxi
                 </h2>
-                <img
+                <Image
                   src="https://cdn-icons-png.flaticon.com/512/1436/1436392.png"
-                  className="w-10 h-10 opacity-90 drop-shadow"
+                  className="opacity-90 drop-shadow"
                   alt="icon"
+                  width={30}
+                  height={30}
                 />
               </div>
 
@@ -315,10 +312,12 @@ const IncomeComponent: React.FC = () => {
               {/* Bottom */}
               <div className="flex justify-end items-end">
                 {/* You can use an image or icon for Visa, here’s the image version: */}
-                <img
+                <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
                   alt="Visa"
-                  className="w-14 h-8 object-contain drop-shadow"
+                  className="object-contain drop-shadow"
+                  height={70}
+                  width={70}
                 />
                 {/* Or, if you prefer the icon, uncomment below and comment out the image above:
       <i className="bx bxl-visa text-2xl text-blue-400 drop-shadow"></i>
@@ -336,9 +335,9 @@ const IncomeComponent: React.FC = () => {
     overflow-hidden
   "
           >
-           {/* Decorative blurred circles for glass effect */}
-  <div className="absolute -top-10 -left-10 w-32 h-32 bg-gray-300/30 rounded-full blur-2xl z-0"></div>
-  <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-blue-600/30 rounded-full blur-2xl z-0"></div>
+            {/* Decorative blurred circles for glass effect */}
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-gray-300/30 rounded-full blur-2xl z-0"></div>
+            <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-blue-600/30 rounded-full blur-2xl z-0"></div>
 
             <div className="relative z-10 flex flex-col h-full justify-between">
               {/* Top */}
@@ -346,10 +345,12 @@ const IncomeComponent: React.FC = () => {
                 <h2 className="text-xl font-bold text-blue-900 tracking-wide drop-shadow">
                   FUBAR Taxi
                 </h2>
-                <img
+                <Image
                   src="https://cdn-icons-png.flaticon.com/512/1436/1436392.png"
-                  className="w-10 h-10 opacity-90 drop-shadow"
+                  className="opacity-90 drop-shadow"
                   alt="icon"
+                  height={30}
+                  width={30}
                 />
               </div>
 
@@ -366,10 +367,12 @@ const IncomeComponent: React.FC = () => {
               {/* Bottom */}
               <div className="flex justify-end items-end">
                 {/* You can use an image or icon for Visa, here’s the image version: */}
-                <img
+                <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
                   alt="Visa"
-                  className="w-14 h-8 object-contain drop-shadow"
+                  className="object-contain drop-shadow"
+                  width={70}
+                  height={70}
                 />
                 {/* Or, if you prefer the icon, uncomment below and comment out the image above:
       <i className="bx bxl-visa text-2xl text-blue-400 drop-shadow"></i>

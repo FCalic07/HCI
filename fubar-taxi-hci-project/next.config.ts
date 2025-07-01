@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      new URL('https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png'),
+      new URL('https://cdn-icons-png.flaticon.com/512/1436/1436392.png'),
     ],
   },
 };
