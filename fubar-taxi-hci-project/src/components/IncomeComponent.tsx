@@ -223,20 +223,20 @@ const IncomeComponent: React.FC = () => {
           {/* Total Income */}
           <div
             className="
-          relative max-w-full rounded-2xl shadow-xl p-6
-          bg-gradient-to-br from-black via-yellow-100/40 to-yellow-500/60
-          backdrop-blur-md
-          overflow-hidden
+        relative max-w-full rounded-2xl shadow-xl p-6
+        bg-gradient-to-br from-blue-900 via-blue-100 to-blue-500/70
+        backdrop-blur-md
+        overflow-hidden
         "
           >
             {/* Decorative blurred circles for glass effect */}
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-400/30 rounded-full blur-2xl z-0"></div>
-            <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-black/30 rounded-full blur-2xl z-0"></div>
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-900 rounded-full blur-2xl z-0"></div>
+            <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-blue-600/30 rounded-full blur-2xl z-0"></div>
 
             <div className="relative z-10 flex flex-col h-full justify-between">
               {/* Top */}
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold text-yellow-400 tracking-wide drop-shadow">
+                <h2 className="text-xl font-bold text-white tracking-wide drop-shadow">
                   FUBAR Taxi
                 </h2>
                 <Image
@@ -264,8 +264,8 @@ const IncomeComponent: React.FC = () => {
                   src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
                   alt="Visa"
                   className="object-contain drop-shadow"
-                  height={70}
-                  width={70}
+                  height={60}
+                  width={60}
                 />
               </div>
             </div>
@@ -274,20 +274,20 @@ const IncomeComponent: React.FC = () => {
           {/* Total Month Income */}
           <div
             className="
-          relative max-w-full rounded-2xl shadow-xl p-6
-          bg-gradient-to-br from-black via-white to-red-600
-          backdrop-blur-md
-          overflow-hidden
+        relative max-w-full rounded-2xl shadow-xl p-6
+        bg-gradient-to-br from-blue-900 via-blue-100 to-blue-500/70
+        backdrop-blur-md
+        overflow-hidden
         "
           >
             {/* Decorative blurred circles for glass effect */}
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-black rounded-full blur-2xl z-0"></div>
-            <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-red-600 rounded-full blur-2xl z-0"></div>
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-900 rounded-full blur-2xl z-0"></div>
+            <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-blue-600/30 rounded-full blur-2xl z-0"></div>
 
             <div className="relative z-10 flex flex-col h-full justify-between">
               {/* Top */}
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold text-red-600 tracking-wide drop-shadow">
+                <h2 className="text-xl font-bold text-white tracking-wide drop-shadow">
                   FUBAR Taxi
                 </h2>
                 <Image
@@ -316,8 +316,8 @@ const IncomeComponent: React.FC = () => {
                   src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
                   alt="Visa"
                   className="object-contain drop-shadow"
-                  height={70}
-                  width={70}
+                  height={60}
+                  width={60}
                 />
                 {/* Or, if you prefer the icon, uncomment below and comment out the image above:
       <i className="bx bxl-visa text-2xl text-blue-400 drop-shadow"></i>
@@ -329,20 +329,20 @@ const IncomeComponent: React.FC = () => {
           {/* Total Income Today */}
           <div
             className="
-    relative max-w-full rounded-2xl shadow-xl p-6
-    bg-gradient-to-br from-blue-900 via-gray-200/60 to-blue-500/70
-    backdrop-blur-md
-    overflow-hidden
-  "
+        relative max-w-full rounded-2xl shadow-xl p-6
+        bg-gradient-to-br from-blue-900 via-blue-100 to-blue-500/70
+        backdrop-blur-md
+        overflow-hidden
+        "
           >
             {/* Decorative blurred circles for glass effect */}
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-gray-300/30 rounded-full blur-2xl z-0"></div>
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-900 rounded-full blur-2xl z-0"></div>
             <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-blue-600/30 rounded-full blur-2xl z-0"></div>
 
             <div className="relative z-10 flex flex-col h-full justify-between">
               {/* Top */}
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold text-blue-900 tracking-wide drop-shadow">
+                <h2 className="text-xl font-bold text-white tracking-wide drop-shadow">
                   FUBAR Taxi
                 </h2>
                 <Image
@@ -371,22 +371,22 @@ const IncomeComponent: React.FC = () => {
                   src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
                   alt="Visa"
                   className="object-contain drop-shadow"
-                  width={70}
-                  height={70}
+                  width={60}
+                  height={60}
                 />
                 {/* Or, if you prefer the icon, uncomment below and comment out the image above:
-      <i className="bx bxl-visa text-2xl text-blue-400 drop-shadow"></i>
-      */}
+          <i className="bx bxl-visa text-2xl text-blue-400 drop-shadow"></i>
+          */}
               </div>
             </div>
           </div>
         </div>
 
         {/* Driver Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8 M-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-3xl mx-auto items-baseline">
           {/* Driver 1 */}
           <div className="totalPricePerDriver1 bg-white rounded-lg shadow p-6">
-            <div>
+            <div className="flex-col  items-center">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-lg font-semibold text-black">
                   {drivers[0]?.username}
