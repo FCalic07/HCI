@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarOn } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
 import {
   Chart,
   CategoryScale,
@@ -28,17 +27,16 @@ Chart.register(
   Legend
 );
 
-// Types for TypeScript
+type Driver = {
+  id: number;
+  username: string;
+};
+
 type Ride = {
   id: number;
   price: string;
   startTime: string;
   endTime: string;
-};
-
-type Driver = {
-  id: number;
-  username: string;
 };
 
 type IncomeStats = {
@@ -124,16 +122,16 @@ const IncomeComponent: React.FC = () => {
       let driver1Rides = 0,
         driver2Rides = 0,
         todayRides = 0;
-      const todayDate = today.toISOString().split("T")[0];
       const currentMonth = today.getMonth() + 1;
       const currentYear = today.getFullYear();
 
       // For chart2: daily income in this month
-      let totalPriceByDay: { [day: string]: number } = {};
+      const totalPriceByDay: { [day: string]: number } = {};
       // For chart3: monthly income by year
-      let monthlyIncome: { [month: string]: number } = {};
+      const monthlyIncome: { [month: string]: number } = {};
 
-      Object.values(data).forEach((ride: any) => {
+      Object.values(data).forEach((rideRaw) => {
+        const ride = rideRaw as Ride;
         const price = parseFloat(ride.price);
         if (!isNaN(price)) {
           total += price;
@@ -146,7 +144,6 @@ const IncomeComponent: React.FC = () => {
 
         // "DD/MM/YYYY"
         const [startD, startM, startY] = startDateStr.split("/").map(Number);
-        const [endD, endM, endY] = endDateStr.split("/").map(Number);
         const rideDate = new Date(startY, startM - 1, startD);
 
         // Monthly income
@@ -221,7 +218,6 @@ const IncomeComponent: React.FC = () => {
   const formattedDate = `${today.getDate()}.${
     today.getMonth() + 1
   }.${today.getFullYear()}`;
-  const currentDay = daysInCroatian[today.getDay()];
   const currentMonthName = monthNamesCroatian[today.getMonth()];
 
   return (
