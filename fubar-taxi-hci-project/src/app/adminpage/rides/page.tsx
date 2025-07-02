@@ -23,7 +23,6 @@ export default function RideTable() {
   const currentRides = filteredRides.slice(startIndex, startIndex + PAGE_SIZE);
 
   useEffect(() => {
-    let previousRideIds: Set<string> = new Set();
     const lastSeenRide = localStorage.getItem("lastShownRide");
 
     const unsubscribe = subscribeToRides(
@@ -45,7 +44,6 @@ export default function RideTable() {
         setRides(updatedRides);
         setLoading(false);
         setError(null);
-        previousRideIds = currentRideIds;
 
         // Update localStorage after a delay (e.g. to allow user to see "NEW" highlight)
         if (updatedRides.length > 0) {
