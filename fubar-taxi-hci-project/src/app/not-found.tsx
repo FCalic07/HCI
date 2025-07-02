@@ -3,6 +3,7 @@ import "aos/dist/aos.css";
 import "./styles.css";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -32,6 +33,7 @@ export default function NotFound() {
         justify-center
         md:pt-1
         px-4 
+        pb-32
       "
         style={{ contentVisibility: "auto" }}
       >
@@ -51,14 +53,14 @@ export default function NotFound() {
     "
         >
           <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-bold leading-tight">
-            We couldn't find that page for you.
+            We couldn&apos;t find that page for you.
           </h1>
           <h2 className="text-base sm:text-lg md:text-2xl lg:text-3xl font-semibold mt-4 leading-tight opacity-80">
             Looks like you took a wrong turn - would you like to update your
             destination to{" "}
-            <a className="active text-[#FF7366]" href="/">
+            <Link className="active text-[#FF7366]" href="/">
               home?
-            </a>
+            </Link>
           </h2>
         </div>
 
