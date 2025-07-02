@@ -27,7 +27,6 @@ export default function RideTable() {
 
     const unsubscribe = subscribeToRides(
       (updatedRides) => {
-        const currentRideIds = new Set(updatedRides.map((r) => r.firebaseKey));
         const newIds = new Set<string>();
 
         // Determine the index of lastSeenRide
